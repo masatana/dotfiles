@@ -21,6 +21,7 @@ if has("vim_starting")
     call neobundle#rc(expand("~/.vim/bundle/"))
 endif
 
+NeoBundleFetch 'Shougo/neobundle.vim'
 if has('lua')
     NeoBundle 'Shougo/neocomplete', {
         \ 'autoload': {
@@ -32,7 +33,7 @@ else
         \       'insert': 1,
         \ }}
 endif
-NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Align'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
@@ -61,7 +62,7 @@ NeoBundleCheck
 "}}}
 
 "==============================================================================
-"Settings{{{
+"General Settings{{{
 "==============================================================================
 "Set augroup.
 augroup MyAutoCmd
