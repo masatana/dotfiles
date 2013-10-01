@@ -41,6 +41,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'mrtazz/simplenote.vim', {'lazy': 1}
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
