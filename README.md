@@ -9,6 +9,9 @@
     $ ./setup.sh
     $ vim ~/.vimrc
 
+## Note
+If you wanted to write sensitive information, please write it in .vimrc.local
+
 ## Future work
 1. Check existed dotfiles.
 2. Auto install nesessary software.
