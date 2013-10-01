@@ -41,7 +41,6 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'mrtazz/simplenote.vim', {'lazy': 1}
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -62,7 +61,7 @@ NeoBundleCheck
 "}}}
 
 "==============================================================================
-"Settings{{{
+" General Settings{{{
 "==============================================================================
 "Set augroup.
 augroup MyAutoCmd
@@ -147,6 +146,11 @@ let g:mapleader=','
 "Disable bell.
 set t_vb=
 set novisualbell
+
+"Read .vimrc.local if exists.
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
 "}}}
 
 "==============================================================================
