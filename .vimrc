@@ -70,7 +70,13 @@ augroup END
 
 "Enable color changing when reloading .vimrc.
 if !has('gui_running') && !(has('win32') || has('win64'))
+    "For Vim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+    "For GVim.
+    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
+            \if has ('gui_running') | source $MYGVIMRC
+    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') | source $MYGVIMRC
 endif
 
 "Enable smart indent.
@@ -82,7 +88,7 @@ set foldmethod=marker
 "Enable syntax.
 syntax enable
 
-"Show line number.
+"Show line numbers.
 set number
 
 "Exchange tab to space.
