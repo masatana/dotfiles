@@ -258,6 +258,6 @@ autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
-autocmd FileType text setlocal textwidth=80
-autocmd FileType markdown setlocal textwidth=80
+autocmd FileType text setlocal textwidth=120
+autocmd FileType markdown setlocal textwidth=120
 "}}}
