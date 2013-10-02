@@ -41,6 +41,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -195,6 +196,9 @@ let g:quickrun_config = {
             \        "runner/vimproc/updatetime": 60
             \    },
             \}
+let g:quickrun_config['markdown'] = {
+            \   'outputter': 'browser',
+            \}
 
 if has('lua')
     "neocomplete
@@ -256,4 +260,5 @@ autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 "}}}

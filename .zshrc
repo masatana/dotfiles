@@ -67,3 +67,5 @@ case "`uname`" in
         alias ls="ls --color=auto -l"
     ;;
 esac
+
+export PATH=$PATH:/Users/masatana/.cabal/bin/
