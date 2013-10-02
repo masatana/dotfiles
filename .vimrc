@@ -122,6 +122,9 @@ set hlsearch
 "Show the line and column number of the cursor position.
 set ruler
 
+"The cursor line will always be in the middle of the window.
+set scrolloff=999
+
 
 set clipboard=unnamed,autoselect
 set noswapfile
