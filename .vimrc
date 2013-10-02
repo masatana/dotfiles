@@ -261,5 +261,3 @@ autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
 autocmd FileType markdown setlocal textwidth=80
 "}}}
-
-
