@@ -13,13 +13,19 @@ if !filereadable(neobundle_readme)
     let isNeoBundleAlreadyInstalled = 0
 endif
 
+function! s:meet_neocomplete_requirements()
+    return has('lua') && ((v:version > 703) || ((v:version == 703) && has('patch885')))
+endfunction
+
+
 filetype plugin indent off
 if has("vim_starting")
     set runtimepath+=~/.vim/bundle/neobundle.vim/
     call neobundle#rc(expand("~/.vim/bundle/"))
 endif
 
-if has('lua')
+NeoBundleFetch 'Shougo/neobundle.vim'
+if s:meet_neocomplete_requirements()
     NeoBundle 'Shougo/neocomplete', {
         \ 'autoload': {
         \       'insert': 1,
@@ -30,7 +36,7 @@ else
         \       'insert': 1,
         \ }}
 endif
-NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Align'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
@@ -59,7 +65,7 @@ NeoBundleCheck
 "}}}
 
 "==============================================================================
-"Settings{{{
+"General Settings{{{
 "==============================================================================
 "Set augroup.
 augroup MyAutoCmd
@@ -192,7 +198,7 @@ let g:quickrun_config = {
             \    },
             \}
 
-if has('lua')
+if s:meet_neocomplete_requirements()
     "neocomplete
     let g:neocomplete#enable_at_startup=1
     let g:neocomplete#enable_smart_case=1

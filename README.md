@@ -11,4 +11,4 @@
 
 ## Future work
 1. Check existed dotfiles.
-2. Auto install nesessary software.
+2. Auto install nesessary softwares.
