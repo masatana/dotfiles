@@ -2,8 +2,6 @@ scriptencoding utf-8
 "==============================================================================
 "Neobundle{{{
 "==============================================================================
-set nocompatible
-
 "Auto install NeoBundle
 let isNeoBundleAlreadyInstalled = 1
 let neobundle_readme = expand('~/.vim/bundle/neobundle.vim/README.md')
@@ -15,13 +13,19 @@ if !filereadable(neobundle_readme)
     let isNeoBundleAlreadyInstalled = 0
 endif
 
+function! s:meet_neocomplete_requirements()
+    return has('lua') && ((v:version > 703) || ((v:version == 703) && has('patch885')))
+endfunction
+
+
 filetype plugin indent off
 if has("vim_starting")
     set runtimepath+=~/.vim/bundle/neobundle.vim/
     call neobundle#rc(expand("~/.vim/bundle/"))
 endif
 
-if has('lua')
+NeoBundleFetch 'Shougo/neobundle.vim'
+if s:meet_neocomplete_requirements()
     NeoBundle 'Shougo/neocomplete', {
         \ 'autoload': {
         \       'insert': 1,
@@ -32,7 +36,7 @@ else
         \       'insert': 1,
         \ }}
 endif
-NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Align'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
@@ -62,7 +66,7 @@ NeoBundleCheck
 "}}}
 
 "==============================================================================
-" General Settings{{{
+"General Settings{{{
 "==============================================================================
 "Set augroup.
 augroup MyAutoCmd
@@ -124,6 +128,9 @@ set hlsearch
 
 "Show the line and column number of the cursor position.
 set ruler
+
+"The cursor line will always be in the middle of the window.
+set scrolloff=999
 
 
 set clipboard=unnamed,autoselect
@@ -200,7 +207,7 @@ let g:quickrun_config['markdown'] = {
             \   'outputter': 'browser',
             \}
 
-if has('lua')
+if s:meet_neocomplete_requirements()
     "neocomplete
     let g:neocomplete#enable_at_startup=1
     let g:neocomplete#enable_smart_case=1
@@ -260,5 +267,10 @@ autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
+<<<<<<< HEAD
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+=======
+autocmd FileType text setlocal textwidth=120
+autocmd FileType markdown setlocal textwidth=120
+>>>>>>> 9f2bf97c3bf7becbcaf6617244e3ee20ec638142
 "}}}

@@ -7,7 +7,7 @@ esac
 
 autoload -U compinit && compinit
 
-#日本語UTF-8環境にする
+#Set language enviornment to Japanese UTF-8.
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 export KCODE=u
@@ -18,6 +18,7 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt hist_ignore_dups # コマンド履歴が重複しないようにする
 setopt share_history # コマンド履歴を共有する
+setopt hist_reduce_blanks
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -43,8 +44,6 @@ setopt auto_cd # ディレクトリ名のみで移動できる
 setopt auto_pushd # これまでに移動したディレクトリが一覧表示される
 setopt correct # 自動修正機能
 setopt nolistbeep # 音を鳴らさない
-# lsに色をつける
-# DarwinとLinuxで分ける
 autoload -Uz colors
 export LSCOLORS=exfxcxdxbxegedabagacad
 alias grep="grep --color=auto"
