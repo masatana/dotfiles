@@ -46,6 +46,7 @@ NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -154,6 +155,11 @@ let g:mapleader=','
 "Disable bell.
 set t_vb=
 set novisualbell
+
+"Read .vimrc.local if exists.
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
 "}}}
 
 "==============================================================================
@@ -197,6 +203,9 @@ let g:quickrun_config = {
             \        "runner": "vimproc",
             \        "runner/vimproc/updatetime": 60
             \    },
+            \}
+let g:quickrun_config['markdown'] = {
+            \   'outputter': 'browser',
             \}
 
 if s:meet_neocomplete_requirements()
@@ -259,6 +268,5 @@ autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
-autocmd FileType text setlocal textwidth=120
-autocmd FileType markdown setlocal textwidth=120
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown textwidth=120
 "}}}
