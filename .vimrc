@@ -143,7 +143,7 @@ set textwidth=0
 if exists('&colorcolumn')
     set colorcolumn=+1
 endif
-autocmd BufNewFile * silent! 0r $HOME/.vim.myconf/templates/%:e.tpl
+autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
