@@ -204,6 +204,7 @@ let g:quickrun_config = {
             \        "runner/vimproc/updatetime": 60
             \    },
             \}
+
 let g:quickrun_config['markdown'] = {
             \   'outputter': 'browser',
             \}
