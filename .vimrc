@@ -141,6 +141,9 @@ set splitbelow
 "When on, splitting a window will put the new window right of the current one.
 set splitright
 
+"Highlight Zenkaku space.
+
+
 set clipboard=unnamed,autoselect
 set noswapfile
 set t_Co=256
