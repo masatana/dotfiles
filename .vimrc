@@ -47,6 +47,8 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'mattn/hahhah-vim'
+NeoBundle 'mattn/vim-airline-hahhah'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
