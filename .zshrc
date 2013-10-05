@@ -67,4 +67,4 @@ case "`uname`" in
     ;;
 esac
 
-export PATH=$PATH:/Users/masatana/.cabal/bin/
+export PATH=$PATH:$HOME/.cabal/bin/
