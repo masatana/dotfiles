@@ -38,6 +38,7 @@ else
 endif
 
 NeoBundle 'Align'
+NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/unite.vim'

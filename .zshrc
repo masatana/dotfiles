@@ -61,6 +61,7 @@ case "`uname`" in
         alias ls="ls -G -l"
         # alias python2="python"
         alias py3="python3"
+        export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin:/usr/local/bin/
     ;;
     Linux)
         alias ls="ls --color=auto -l"
