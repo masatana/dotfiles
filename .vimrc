@@ -1,4 +1,40 @@
-scriptencoding utf-8
+"==============================================================================
+"Initialize{{{
+"==============================================================================
+"Check platform.
+let s:iswin = has('win32') || has('win64')
+let s:iscygwin = has('win32unix')
+let s:ismac = has('mac') || has('macunix') || has('gui_mac') ||
+            \has('gui_macvim') || (!executable('xdg-open') && system('uname') =~? '^darwin')
+let s:islinux  !s:iswin && !s:iscygwin && !s:ismac
+
+if s:iswin
+    language message en
+else
+    language message C
+endif
+language ctype C
+language time C
+
+"Use <Leader> in global plugin.
+let g:mapleader=','
+
+"Environment variables.
+if !exists("$MYVIMRC")
+    let $MYVIMRC = expand('~/.vimrc')
+endif
+
+if !exists("$MYGVIMRC")
+    let $MYGVIMRC = expand('~/.gvimrc')
+endif
+
+"Set augroup.
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
+"}}}
+
 "==============================================================================
 "Neobundle{{{
 "==============================================================================
@@ -72,13 +108,9 @@ NeoBundleCheck
 "==============================================================================
 "General Settings{{{
 "==============================================================================
-"Set augroup.
-augroup MyAutoCmd
-    autocmd!
-augroup END
 
 "Enable color changing when reloading .vimrc.
-if !has('gui_running') && !(has('win32') || has('win64'))
+if !has('gui_running') && !s:iswin
     "For Vim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 else
@@ -160,8 +192,6 @@ set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
-"Use <Leader> in global plugin.
-let g:mapleader=','
 
 "Disable bell.
 set t_vb=
