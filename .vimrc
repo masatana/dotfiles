@@ -6,7 +6,7 @@ let s:iswin = has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
 let s:ismac = has('mac') || has('macunix') || has('gui_mac') ||
             \has('gui_macvim') || (!executable('xdg-open') && system('uname') =~? '^darwin')
-let s:islinux  !s:iswin && !s:iscygwin && !s:ismac
+let s:islinux = !s:iswin && !s:iscygwin && !s:ismac
 
 if s:iswin
     language message en
