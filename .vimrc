@@ -47,9 +47,10 @@ if !filereadable(neobundle_readme)
     echo ""
     silent !mkdir -p $HOME/.vim/bundle
     silent !git clone https://github.com/Shougo/neobundle.vim
-                \$HOME/.vim/bundle/neobundle.vim
+                \ $HOME/.vim/bundle/neobundle.vim
     let isNeoBundleAlreadyInstalled = 0
 endif
+
 
 function! s:meet_neocomplete_requirements()
     return has('lua') && ((v:version > 703) || ((v:version == 703) &&
@@ -194,7 +195,7 @@ endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set list
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+"set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
 
