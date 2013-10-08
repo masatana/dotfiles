@@ -1,4 +1,41 @@
-scriptencoding utf-8
+"==============================================================================
+"Initialize{{{
+"==============================================================================
+"Check platform.
+let s:iswin = has('win32') || has('win64')
+let s:iscygwin = has('win32unix')
+let s:ismac = has('mac') || has('macunix') || has('gui_mac') ||
+            \has('gui_macvim') || (!executable('xdg-open')
+            \&& system('uname') =~? '^darwin')
+let s:islinux = !s:iswin && !s:iscygwin && !s:ismac
+
+if s:iswin
+    language message en
+else
+    language message C
+endif
+language ctype C
+language time C
+
+"Use <Leader> in global plugin.
+let g:mapleader=','
+
+"Environment variables.
+if !exists("$MYVIMRC")
+    let $MYVIMRC = expand('~/.vimrc')
+endif
+
+if !exists("$MYGVIMRC")
+    let $MYGVIMRC = expand('~/.gvimrc')
+endif
+
+"Set augroup.
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
+"}}}
+
 "==============================================================================
 "Neobundle{{{
 "==============================================================================
@@ -9,12 +46,15 @@ if !filereadable(neobundle_readme)
     echo "Installing NeoBundle..."
     echo ""
     silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    silent !git clone https://github.com/Shougo/neobundle.vim
+                \ $HOME/.vim/bundle/neobundle.vim
     let isNeoBundleAlreadyInstalled = 0
 endif
 
+
 function! s:meet_neocomplete_requirements()
-    return has('lua') && ((v:version > 703) || ((v:version == 703) && has('patch885')))
+    return has('lua') && ((v:version > 703) || ((v:version == 703) &&
+                \has('patch885')))
 endfunction
 
 
@@ -72,20 +112,17 @@ NeoBundleCheck
 "==============================================================================
 "General Settings{{{
 "==============================================================================
-"Set augroup.
-augroup MyAutoCmd
-    autocmd!
-augroup END
 
 "Enable color changing when reloading .vimrc.
-if !has('gui_running') && !(has('win32') || has('win64'))
+if !has('gui_running') && !s:iswin
     "For Vim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 else
     "For GVim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
             \if has ('gui_running') | source $MYGVIMRC
-    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') | source $MYGVIMRC
+    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') |
+                \source $MYGVIMRC
 endif
 
 "Enable smart indent.
@@ -110,7 +147,8 @@ set smarttab
 set title
 
 "Set number of spaces to use for each step of (auto)indent.
-set shiftwidth=4
+"And round indent to multiple of 'shiftwidth'
+set shiftwidth=4 shiftround
 
 "Highlight parenthesis.
 set showmatch
@@ -154,11 +192,9 @@ endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set list
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+"set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
-"Use <Leader> in global plugin.
-let g:mapleader=','
 
 "Disable bell.
 set t_vb=
@@ -249,8 +285,10 @@ else
         let g:neocomplcache_keyword_patterns={}
     endif
     let g:neocomplcache_keyword_patterns['default']='\h\w*'
-    map <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
-    smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+    map <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
+                \? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+    smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
+                \? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
     inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
     inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
     inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
