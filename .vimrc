@@ -5,8 +5,8 @@
 let s:iswin = has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
 let s:ismac = has('mac') || has('macunix') || has('gui_mac') ||
-            \has('gui_macvim') || (!executable('xdg-open')
-            \&& system('uname') =~? '^darwin')
+            \ has('gui_macvim') || (!executable('xdg-open') &&
+            \ system('uname') =~? '^darwin')
 let s:islinux = !s:iswin && !s:iscygwin && !s:ismac
 
 if s:iswin
@@ -54,7 +54,7 @@ endif
 
 function! s:meet_neocomplete_requirements()
     return has('lua') && ((v:version > 703) || ((v:version == 703) &&
-                \has('patch885')))
+                \ has('patch885')))
 endfunction
 
 
@@ -120,9 +120,9 @@ if !has('gui_running') && !s:iswin
 else
     "For GVim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
-            \if has ('gui_running') | source $MYGVIMRC
+            \ if has ('gui_running') | source $MYGVIMRC
     autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') |
-                \source $MYGVIMRC
+                \ source $MYGVIMRC
 endif
 
 "Enable smart indent.
@@ -195,7 +195,7 @@ endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set list
-"set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
 
@@ -244,17 +244,17 @@ let Tlist_Show_One_File = 1 "現在編集中のSourceのtagしか表示しない
 
 "quickrun
 let g:quickrun_config = {
-            \    "_": {
-            \        "outputter/buffer/split": ":botright",
-            \        "outputter/buffer/close_on_empty": 1,
-            \        "runner": "vimproc",
-            \        "runner/vimproc/updatetime": 60
-            \    },
-            \}
+            \     "_": {
+            \         "outputter/buffer/split": ":botright",
+            \         "outputter/buffer/close_on_empty": 1,
+            \         "runner": "vimproc",
+            \         "runner/vimproc/updatetime": 60
+            \     },
+            \ }
 
 let g:quickrun_config['markdown'] = {
-            \   'outputter': 'browser',
-            \}
+            \    'outputter': 'browser',
+            \ }
 
 if s:meet_neocomplete_requirements()
     "neocomplete
@@ -289,9 +289,9 @@ else
     endif
     let g:neocomplcache_keyword_patterns['default']='\h\w*'
     map <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
     smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
     inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
     inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
     inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
