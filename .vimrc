@@ -1,3 +1,12 @@
+" My .vimrc
+"
+"  ^    ^    ^    ^    ^    ^    ^    ^  
+" /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\ 
+"<___><___><___><___><___><___><___><___>
+"
+"Author: masatana <plaza.tumbling@gmail.com>
+"
+
 "==============================================================================
 "Initialize{{{
 "==============================================================================
@@ -191,7 +200,7 @@ if exists('&colorcolumn')
 endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set list
+"set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
