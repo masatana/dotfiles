@@ -42,7 +42,7 @@ PROMPT2="%_%% "
 # その他オプション
 setopt auto_cd # ディレクトリ名のみで移動できる
 setopt auto_pushd # これまでに移動したディレクトリが一覧表示される
-setopt correct # 自動修正機能
+# setopt correct # 自動修正機能
 setopt nolistbeep # 音を鳴らさない
 autoload -Uz colors
 export LSCOLORS=exfxcxdxbxegedabagacad
