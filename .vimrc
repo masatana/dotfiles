@@ -189,11 +189,17 @@ set splitbelow
 "When on, splitting a window will put the new window right of the current one.
 set splitright
 
-set clipboard=unnamed,autoselect
+"Allow backspacing over sutoindent, line breaks, start of insert.
+set backspace=indent,eol,start
+
+"Do not use a swapfile for the buffer.
 set noswapfile
-set t_Co=256
+
+"The last window always have a status line.
 set laststatus=2
-set bs=2
+
+set clipboard=unnamed,autoselect
+set t_Co=256
 set textwidth=0
 if exists('&colorcolumn')
     set colorcolumn=+1
