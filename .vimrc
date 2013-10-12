@@ -1,4 +1,4 @@
-" My .vimrc
+"My .vimrc
 "
 "  ^    ^    ^    ^    ^    ^    ^    ^  
 " /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\ 
@@ -25,6 +25,11 @@ else
 endif
 language ctype C
 language time C
+
+if s:iswin
+    "Exchange path separator.
+    set shellslash
+endif
 
 "Use <Leader> in global plugin.
 let g:mapleader=','
@@ -190,11 +195,21 @@ set splitbelow
 "When on, splitting a window will put the new window right of the current one.
 set splitright
 
-set clipboard=unnamed,autoselect
+"Allow backspacing over sutoindent, line breaks, start of insert.
+set backspace=indent,eol,start
+
+"Do not use a swapfile for the buffer.
 set noswapfile
-set t_Co=256
+
+"The last window always have a status line.
 set laststatus=2
-set bs=2
+
+"When `useopen`, jump to the first open window that contains the specified
+"buffer.
+set switchbuf=useopen
+
+set clipboard=unnamed,autoselect
+set t_Co=256
 set textwidth=0
 if exists('&colorcolumn')
     set colorcolumn=+1
@@ -219,14 +234,22 @@ endif
 "==============================================================================
 "Remappings{{{
 "==============================================================================
+"Now, <C-c> and <Esc> are exactly the same.
 inoremap <C-c> <Esc>
 
 noremap <BS> <C-h>
 noremap! <BS> <C-h>
 
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+
 nnoremap j gj
 nnoremap k gk
-nnoremap <Space>ev : <C-u>edit $MYVIMRC<CR>
+nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
 "}}}
 
 "==============================================================================
