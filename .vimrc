@@ -1,7 +1,7 @@
 "My .vimrc
 "
-"  ^    ^    ^    ^    ^    ^    ^    ^  
-" /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\ 
+"  ^    ^    ^    ^    ^    ^    ^    ^
+" /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
 "<___><___><___><___><___><___><___><___>
 "
 "Author: masatana <plaza.tumbling@gmail.com>
@@ -299,10 +299,19 @@ if s:meet_neocomplete_requirements()
     if !exists('g:neocomplete#keyword_patterns')
         let g:neocmplete#keyword_patterns={}
     endif
+    let g:neocmplete#keyword_patterns['default'] = '\h\w*'
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        return neocomplete#smart_close_popup() . "\<CR>"
+        return pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
     endfunction
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+    endif
 else
     "neocomplcache
     set completeopt=menuone
