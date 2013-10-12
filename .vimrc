@@ -80,7 +80,8 @@ if s:meet_neocomplete_requirements()
         \       'insert': 1,
         \ }}
 else
-    NeoBundle 'Shougo/neocomplcache', {'lazy': 1,
+    NeoBundle 'Shougo/neocomplcache', {
+        \ 'lazy': 1,
         \ 'autoload': {
         \       'insert': 1,
         \ }}
