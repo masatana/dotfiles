@@ -69,3 +69,4 @@ case "`uname`" in
 esac
 
 export PATH=$PATH:$HOME/.cabal/bin/
+export GOROOT="/usr/local/Cellar/go/1.1.2"
