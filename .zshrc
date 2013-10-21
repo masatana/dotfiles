@@ -69,3 +69,7 @@ case "`uname`" in
 esac
 
 export PATH=$PATH:$HOME/.cabal/bin/
+
+TRAPEXIT() {
+    ssh-agent -k
+}
