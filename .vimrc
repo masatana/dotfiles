@@ -240,7 +240,7 @@ inoremap <C-c> <Esc>
 noremap <BS> <C-h>
 noremap! <BS> <C-h>
 
-nmap <silent> <Esc><Esc> :nohlsearch<CR>
+nmap <silent> <C-c> :nohlsearch<CR>
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -358,5 +358,6 @@ autocmd FileType html setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
+autocmd FileType go setlocal rtp+=$GOROOT/misc/vim
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown textwidth=80
 "}}}
