@@ -234,6 +234,14 @@ endif
 "==============================================================================
 "Remappings{{{
 "==============================================================================
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 "Now, <C-c> and <Esc> are exactly the same.
 inoremap <C-c> <Esc>
 
@@ -361,3 +369,15 @@ autocmd FileType text setlocal textwidth=80
 autocmd FileType go setlocal rtp+=$GOROOT/misc/vim
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown textwidth=80
 "}}}
+
+"Scouter
+function! Scouter(file, ...)
+    let pat = '^\s*$\|^\s*"'
+    let lines = readfile(a:file)
+    if !a:0 || !a:1
+        let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
+    endif
+    return len(filter(lines,'v:val !~ pat'))
+endfunction
+command! -bar -bang -nargs=? -complete=file Scouter
+    \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
