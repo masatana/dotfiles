@@ -113,6 +113,7 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
+NeoBundle 'Shougo/vimshell'
 filetype plugin indent on
 
 "First-time plugins installation.
