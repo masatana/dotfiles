@@ -69,11 +69,3 @@ case "`uname`" in
 esac
 
 export PATH=$PATH:$HOME/.cabal/bin/
-<<<<<<< HEAD
-
-TRAPEXIT() {
-    ssh-agent -k
-}
-=======
-export GOROOT="/usr/local/Cellar/go/1.1.2"
->>>>>>> 9d0aef984e814efcf8228a73ceb425d3fcb9aed4
