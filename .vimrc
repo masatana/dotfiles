@@ -96,7 +96,6 @@ NeoBundle 'Align'
 NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tpope/vim-surround'
 "NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
@@ -113,7 +112,8 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'Shougo/vimshell'
+"NeoBundle 'Shougo/vimshell.vim'
+"NeoBundle 'scrooloose/nerdtree'
 filetype plugin indent on
 
 "First-time plugins installation.
