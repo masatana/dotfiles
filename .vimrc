@@ -105,6 +105,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/hahhah-vim'
 NeoBundle 'mattn/vim-airline-hahhah'
 NeoBundle 'python.vim'
+NeoBundle 'yanktmp.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -368,6 +369,11 @@ nnoremap <Leader>ga :<C-u>Gadd<CR>
 
 "python.vim
 let python_highlight_all = 1
+
+"yanktmp.vim
+map <silent> sy :call YanktmpYank()<CR>
+map <silent> sp :call YanktmpPaste_p()<CR>
+map <silent> sP :call YanktmpPaste_P()<CR>
 
 "}}}
 
