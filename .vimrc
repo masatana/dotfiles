@@ -96,7 +96,6 @@ NeoBundle 'Align'
 NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tpope/vim-surround'
 "NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
@@ -113,7 +112,8 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'Shougo/vimshell'
+"NeoBundle 'Shougo/vimshell.vim'
+"NeoBundle 'scrooloose/nerdtree'
 filetype plugin indent on
 
 "First-time plugins installation.
@@ -262,6 +262,11 @@ nnoremap # #zz
 nnoremap j gj
 nnoremap k gk
 nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 "}}}
 
 "==============================================================================
