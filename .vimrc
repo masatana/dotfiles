@@ -96,7 +96,6 @@ NeoBundle 'Align'
 NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tpope/vim-surround'
 "NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
@@ -105,6 +104,8 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/hahhah-vim'
 NeoBundle 'mattn/vim-airline-hahhah'
+NeoBundle 'python.vim'
+NeoBundle 'yanktmp.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -113,7 +114,8 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'Shougo/vimshell'
+"NeoBundle 'Shougo/vimshell.vim'
+"NeoBundle 'scrooloose/nerdtree'
 filetype plugin indent on
 
 "First-time plugins installation.
@@ -209,6 +211,9 @@ set laststatus=2
 "buffer.
 set switchbuf=useopen
 
+"Dont't try to highlight lines longer than 300 characters.
+set synmaxcol=300
+
 set clipboard=unnamed,autoselect
 set t_Co=256
 set textwidth=0
@@ -259,6 +264,11 @@ nnoremap # #zz
 nnoremap j gj
 nnoremap k gk
 nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 "}}}
 
 "==============================================================================
@@ -350,6 +360,21 @@ else
         return neocomplcache#smart_close_popup() . "\<CR>"
     endfunction
 endif
+
+" Fugitive
+nnoremap <Leader>gd :<C-u>Gdiff<CR>
+nnoremap <Leader>gs :<C-u>Gstatus<CR>
+nnoremap <Leader>gw :<C-u>Gwrite<CR>
+nnoremap <Leader>ga :<C-u>Gadd<CR>
+
+"python.vim
+let python_highlight_all = 1
+
+"yanktmp.vim
+map <silent> sy :call YanktmpYank()<CR>
+map <silent> sp :call YanktmpPaste_p()<CR>
+map <silent> sP :call YanktmpPaste_P()<CR>
+
 "}}}
 
 "==============================================================================
@@ -382,3 +407,18 @@ function! Scouter(file, ...)
 endfunction
 command! -bar -bang -nargs=? -complete=file Scouter
     \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+
+"Change current directory
+command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang'>)
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+nnoremap <silent><Leader>cd :<C-u>CD<CR>
