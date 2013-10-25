@@ -1,16 +1,15 @@
-"My .vimrc
+" My .vimrc
+" vim: set foldmethod=marker:
+"   ^    ^    ^    ^    ^    ^    ^    ^
+"  /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
+" <___><___><___><___><___><___><___><___>
 "
-"  ^    ^    ^    ^    ^    ^    ^    ^
-" /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
-"<___><___><___><___><___><___><___><___>
-"
-"Author: masatana <plaza.tumbling@gmail.com>
-"
+" Author: masatana <plaza.tumbling@gmail.com>
 
-"==============================================================================
-"Initialize{{{
-"==============================================================================
-"Check platform.
+" ==============================================================================
+" Initialize{{{
+" ==============================================================================
+" Check platform.
 let s:iswin = has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
 let s:ismac = has('mac') || has('macunix') || has('gui_mac') ||
@@ -27,33 +26,33 @@ language ctype C
 language time C
 
 if s:iswin
-    "Exchange path separator.
+    " Exchange path separator.
     set shellslash
 endif
 
-"Use <Leader> in global plugin.
+" Use <Leader> in global plugin.
 let g:mapleader=','
 
-"Environment variables.
-if !exists("$MYVIMRC")
+" Environment variables.
+if !exists(" $MYVIMRC" )
     let $MYVIMRC = expand('~/.vimrc')
 endif
 
-if !exists("$MYGVIMRC")
+if !exists(" $MYGVIMRC" )
     let $MYGVIMRC = expand('~/.gvimrc')
 endif
 
-"Set augroup.
+" Set augroup.
 augroup MyAutoCmd
     autocmd!
 augroup END
 
-"}}}
+" }}}
 
-"==============================================================================
-"Neobundle{{{
-"==============================================================================
-"Auto install NeoBundle
+" ==============================================================================
+" Neobundle{{{
+" ==============================================================================
+" Auto install NeoBundle
 let isNeoBundleAlreadyInstalled = 1
 let neobundle_readme = expand('~/.vim/bundle/neobundle.vim/README.md')
 if !filereadable(neobundle_readme)
@@ -73,9 +72,9 @@ endfunction
 
 
 filetype plugin indent off
-if has("vim_starting")
+if has("vim_starting" )
     set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#rc(expand("~/.vim/bundle/"))
+    call neobundle#rc(expand("~/.vim/bundle/" ))
 endif
 
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -104,7 +103,6 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/hahhah-vim'
 NeoBundle 'mattn/vim-airline-hahhah'
-NeoBundle 'python.vim'
 NeoBundle 'yanktmp.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -116,106 +114,120 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 "NeoBundle 'Shougo/vimshell.vim'
 "NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'glidenote/memolist.vim'
+
+" Python
+NeoBundle 'python.vim'
+
+" Haskell
+NeoBundle 'dag/vim2hs'
+
+
+
 filetype plugin indent on
 
-"First-time plugins installation.
+" First-time plugins installation.
 if isNeoBundleAlreadyInstalled == 0
     echo "Installing Bundles, please ignore key map error messages."
     echo ""
 endif
 
+
 NeoBundleCheck
-"}}}
+" }}}
 
-"==============================================================================
-"General Settings{{{
-"==============================================================================
+" ==============================================================================
+" General Settings{{{
+" ==============================================================================
 
-"Enable color changing when reloading .vimrc.
+" Enable color changing when reloading .vimrc.
 if !has('gui_running') && !s:iswin
-    "For Vim.
+    " For Vim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 else
-    "For GVim.
+    " For GVim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
             \ if has ('gui_running') | source $MYGVIMRC
     autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') |
                 \ source $MYGVIMRC
 endif
 
-"Enable smart indent.
+" Enable smart indent.
 set autoindent smartindent
 
-"Enable folding.
-set foldmethod=marker
+" Enable folding.
+"set foldmethod=marker
 
-"Enable syntax.
+" Enable syntax.
 syntax enable
 
-"Show line numbers.
+" Show line numbers.
 set number
 
-"Exchange tab to space.
+" Exchange tab to space.
 set expandtab
 
-"Smart insert tab setting.
+" Smart insert tab setting.
 set smarttab
 
-"Show title.
+" Show title.
 set title
 
-"Set number of spaces to use for each step of (auto)indent.
-"And round indent to multiple of 'shiftwidth'
+" Set number of spaces to use for each step of (auto)indent.
+" And round indent to multiple of 'shiftwidth'
 set shiftwidth=4 shiftround
 
-"Highlight parenthesis.
+" Highlight parenthesis.
 set showmatch
 
-"Display candidate supplement.
+" Display candidate supplement.
 set nowildmenu wildmode=list:longest,full
 
-"Ignore the case of normal letters, when search.
+" Ignore the case of normal letters, when search.
 set ignorecase
 
-"If the search pattern contains upper case characters, not to ignore.
+" If the search pattern contains upper case characters, not to ignore.
 set smartcase
 
-"Enable incremental search.
+" Enable incremental search.
 set incsearch
 
-"Highlight serach result.
+" Highlight serach result.
 set hlsearch
 
-"Show the line and column number of the cursor position.
+" Show the line and column number of the cursor position.
 set ruler
 
-"The cursor line will always be in the middle of the window.
+" The cursor line will always be in the middle of the window.
 set scrolloff=999
 
-"When on, splitting a window will put the new window below the current one.
+" When on, splitting a window will put the new window below the current one.
 set splitbelow
 
-"When on, splitting a window will put the new window right of the current one.
+" When on, splitting a window will put the new window right of the current one.
 set splitright
 
-"Allow backspacing over sutoindent, line breaks, start of insert.
+" Allow backspacing over sutoindent, line breaks, start of insert.
 set backspace=indent,eol,start
 
-"Do not use a swapfile for the buffer.
+" Do not use a swapfile for the buffer.
 set noswapfile
 
-"The last window always have a status line.
+" The last window always have a status line.
 set laststatus=2
 
-"When `useopen`, jump to the first open window that contains the specified
-"buffer.
+" When `useopen`, jump to the first open window that contains the specified
+" buffer.
 set switchbuf=useopen
 
-"Dont't try to highlight lines longer than 300 characters.
+" Dont't try to highlight lines longer than 300 characters.
 set synmaxcol=300
 
-"Tell Vim what to do with characters with multibite font.
+" Tell Vim what to do with characters with multibite font.
 set ambiwidth=double
+
+" Enable modeline.
+set modeline
 
 set clipboard=unnamed,autoselect
 set t_Co=256
@@ -224,25 +236,25 @@ if exists('&colorcolumn')
     set colorcolumn=+1
 endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
-" set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 "set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
 
-"Disable bell.
+" Disable bell.
 set t_vb=
 set novisualbell
 
-"Read .vimrc.local if exists.
+" Read .vimrc.local if exists.
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
-"}}}
+" }}}
 
-"==============================================================================
-"Remappings{{{
-"==============================================================================
+" ==============================================================================
+" Remappings{{{
+" ==============================================================================
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -251,7 +263,7 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
-"Now, <C-c> and <Esc> are exactly the same.
+" Now, <C-c> and <Esc> are exactly the same.
 inoremap <C-c> <Esc>
 
 noremap <BS> <C-h>
@@ -272,35 +284,35 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-"}}}
+" }}}
 
-"==============================================================================
-"Settings for each bundles{{{
-"==============================================================================
-"airline
+" ==============================================================================
+" Settings for each bundles{{{
+" ==============================================================================
+" airline
 let g:airline_theme='badwolf'
 
-"indentLine
-let g:indentLine_char="¦"
+" indentLine
+let g:indentLine_char="¦" 
 let g:indentLine_color_term=239
 
-"syntastic
+" syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
-"taglist
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_Use_Right_Window = 1 "右側でtaglistのWindowを表示
-let Tlist_Exit_OnlyWindow = 1 "taglistのWindowが最後ならばVimを閉じる
-let Tlist_Show_One_File = 1 "現在編集中のSourceのtagしか表示しない
+" taglist
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags" 
+let Tlist_Use_Right_Window = 1 " 右側でtaglistのWindowを表示
+let Tlist_Exit_OnlyWindow = 1 " taglistのWindowが最後ならばVimを閉じる
+let Tlist_Show_One_File = 1 " 現在編集中のSourceのtagしか表示しない
 
-"quickrun
+" quickrun
 let g:quickrun_config = {
-            \     "_": {
-            \         "outputter/buffer/split": ":botright",
-            \         "outputter/buffer/close_on_empty": 1,
-            \         "runner": "vimproc",
-            \         "runner/vimproc/updatetime": 60
+            \     "_" : {
+            \         "outputter/buffer/split" : ":botright" ,
+            \         "outputter/buffer/close_on_empty" : 1,
+            \         "runner" : "vimproc" ,
+            \         "runner/vimproc/updatetime" : 60
             \     },
             \ }
 
@@ -309,7 +321,7 @@ let g:quickrun_config['markdown'] = {
             \ }
 
 if s:meet_neocomplete_requirements()
-    "neocomplete
+    " neocomplete{{{
     let g:neocomplete#enable_at_startup=1
     let g:neocomplete#enable_smart_case=1
     let g:neocomplete#sources#syntax#min_keyword_length=2
@@ -324,18 +336,18 @@ if s:meet_neocomplete_requirements()
     let g:neocmplete#keyword_patterns['default'] = '\h\w*'
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        return pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
+        return pumvisible() ? neocomplete#smart_close_popup() : "\<CR>" 
     endfunction
-    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>" 
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>" 
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>" 
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     if !exists('g:neocomplete#sources#omni#input_patterns')
         let g:neocomplete#sources#omni#input_patterns = {}
-    endif
+    endif"}}}
 else
-    "neocomplcache
+    " neocomplcache{{{
     set completeopt=menuone
     let g:neocomplcache_enable_at_startup=1
     let g:neocomplcache_enable_smart_case=1
@@ -350,46 +362,57 @@ else
     endif
     let g:neocomplcache_keyword_patterns['default']='\h\w*'
     map <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D" 
     smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
-    inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-    inoremap <expr><C-h>  neocomplcache#smart_close_popup() . "\<C-h>"
-    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
+                \ ? "\<Plug>(neocomplcache_snippets_expand)"  : "\<C-o>D" 
+    inoremap <expr><TAB> pumvisible() ? "\<Down>"  : "\<TAB>" 
+    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>" 
+    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>" 
+    inoremap <expr><C-h>  neocomplcache#smart_close_popup() . "\<C-h>" 
+    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>" 
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        return neocomplcache#smart_close_popup() . "\<CR>"
-    endfunction
+        return neocomplcache#smart_close_popup() . "\<CR>" 
+    endfunction"}}}
 endif
 
-" Fugitive
+"  Fugitive
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
 nnoremap <Leader>gw :<C-u>Gwrite<CR>
 nnoremap <Leader>ga :<C-u>Gadd<CR>
 
-"python.vim
+" python.vim
 let python_highlight_all = 1
 
-"yanktmp.vim
+" yanktmp.vim
 map <silent>sy :call YanktmpYank()<CR>
 map <silent>sp :call YanktmpPaste_p()<CR>
 map <silent>sP :call YanktmpPaste_P()<CR>
 
-"}}}
+" memolist.vim
+map <Leader>mn :MemoNew<CR>
+map <Leader>ml :MemoList<CR>
+map <Leader>mg :MemoGrep<CR>
+let g:memolist_memo_suffix = "md" 
 
-"==============================================================================
-"Encoding{{{
-"==============================================================================
+" netrw.vim (Standard plugin
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
+let g:netrw_alto = 1
+
+" }}}
+
+" ==============================================================================
+" Encoding{{{
+" ==============================================================================
 set encoding=utf-8
 source $HOME/.vim/encode.vim
-"}}}
+" }}}
 
-"==============================================================================
-"Settings for each filetypes{{{
-"==============================================================================
+" ==============================================================================
+" Settings for each filetypes{{{
+" ==============================================================================
 autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
@@ -397,21 +420,21 @@ autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
 autocmd FileType go setlocal rtp+=$GOROOT/misc/vim
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown textwidth=80
-"}}}
+" }}}
 
-"Scouter
+" Scouter
 function! Scouter(file, ...)
     let pat = '^\s*$\|^\s*"'
     let lines = readfile(a:file)
     if !a:0 || !a:1
-        let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
+        let lines = split(substitute(join(lines, "\n" ), '\n\s*\\', '', 'g'), "\n" )
     endif
     return len(filter(lines,'v:val !~ pat'))
 endfunction
 command! -bar -bang -nargs=? -complete=file Scouter
     \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 
-"Change current directory
+" Change current directory
 command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang'>)
 function! s:ChangeCurrentDir(directory, bang)
     if a:directory == ''
