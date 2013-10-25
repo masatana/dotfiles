@@ -104,6 +104,7 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/hahhah-vim'
 NeoBundle 'mattn/vim-airline-hahhah'
+NeoBundle 'python.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -364,6 +365,9 @@ nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
 nnoremap <Leader>gw :<C-u>Gwrite<CR>
 nnoremap <Leader>ga :<C-u>Gadd<CR>
+
+"python.vim
+let python_highlight_all = 1
 
 "}}}
 
