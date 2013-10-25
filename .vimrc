@@ -214,6 +214,9 @@ set switchbuf=useopen
 "Dont't try to highlight lines longer than 300 characters.
 set synmaxcol=300
 
+"Tell Vim what to do with characters with multibite font.
+set ambiwidth=double
+
 set clipboard=unnamed,autoselect
 set t_Co=256
 set textwidth=0
@@ -371,9 +374,9 @@ nnoremap <Leader>ga :<C-u>Gadd<CR>
 let python_highlight_all = 1
 
 "yanktmp.vim
-map <silent> sy :call YanktmpYank()<CR>
-map <silent> sp :call YanktmpPaste_p()<CR>
-map <silent> sP :call YanktmpPaste_P()<CR>
+map <silent>sy :call YanktmpYank()<CR>
+map <silent>sp :call YanktmpPaste_p()<CR>
+map <silent>sP :call YanktmpPaste_P()<CR>
 
 "}}}
 
@@ -406,7 +409,7 @@ function! Scouter(file, ...)
     return len(filter(lines,'v:val !~ pat'))
 endfunction
 command! -bar -bang -nargs=? -complete=file Scouter
-    \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+    \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 
 "Change current directory
 command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang'>)
