@@ -31,7 +31,8 @@ if s:iswin
 endif
 
 " Use <Leader> in global plugin.
-let g:mapleader=','
+"let g:mapleader=','
+let g:mapleader=' '
 
 " Environment variables.
 if !exists(" $MYVIMRC" )
@@ -115,6 +116,7 @@ NeoBundle 'Shougo/vimproc', {
 "NeoBundle 'Shougo/vimshell.vim'
 "NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'mrtazz/simplenote.vim'
 
 " Python
 NeoBundle 'python.vim'
@@ -229,6 +231,9 @@ set ambiwidth=double
 " Enable modeline.
 set modeline
 
+" Sets how much history and undo vim remombers.
+set history=1000
+
 set clipboard=unnamed,autoselect
 set t_Co=256
 set textwidth=0
@@ -293,7 +298,7 @@ nnoremap <C-l> <C-w>l
 let g:airline_theme='badwolf'
 
 " indentLine
-let g:indentLine_char="¦" 
+let g:indentLine_char="¦"
 let g:indentLine_color_term=239
 
 " syntastic
@@ -301,7 +306,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
 " taglist
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags" 
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_Use_Right_Window = 1 " 右側でtaglistのWindowを表示
 let Tlist_Exit_OnlyWindow = 1 " taglistのWindowが最後ならばVimを閉じる
 let Tlist_Show_One_File = 1 " 現在編集中のSourceのtagしか表示しない
@@ -336,11 +341,11 @@ if s:meet_neocomplete_requirements()
     let g:neocmplete#keyword_patterns['default'] = '\h\w*'
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        return pumvisible() ? neocomplete#smart_close_popup() : "\<CR>" 
+        return pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
     endfunction
-    inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>" 
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>" 
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>" 
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>"
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -362,17 +367,17 @@ else
     endif
     let g:neocomplcache_keyword_patterns['default']='\h\w*'
     map <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D" 
+                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
     smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \ ? "\<Plug>(neocomplcache_snippets_expand)"  : "\<C-o>D" 
-    inoremap <expr><TAB> pumvisible() ? "\<Down>"  : "\<TAB>" 
-    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>" 
-    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>" 
-    inoremap <expr><C-h>  neocomplcache#smart_close_popup() . "\<C-h>" 
-    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>" 
+                \ ? "\<Plug>(neocomplcache_snippets_expand)"  : "\<C-o>D"
+    inoremap <expr><TAB> pumvisible() ? "\<Down>"  : "\<TAB>"
+    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+    inoremap <expr><C-h>  neocomplcache#smart_close_popup() . "\<C-h>"
+    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        return neocomplcache#smart_close_popup() . "\<CR>" 
+        return neocomplcache#smart_close_popup() . "\<CR>"
     endfunction"}}}
 endif
 
@@ -394,7 +399,7 @@ map <silent>sP :call YanktmpPaste_P()<CR>
 map <Leader>mn :MemoNew<CR>
 map <Leader>ml :MemoList<CR>
 map <Leader>mg :MemoGrep<CR>
-let g:memolist_memo_suffix = "md" 
+let g:memolist_memo_suffix = "md"
 
 " netrw.vim (Standard plugin
 let g:netrw_liststyle = 3
@@ -448,3 +453,7 @@ function! s:ChangeCurrentDir(directory, bang)
     endif
 endfunction
 nnoremap <silent><Leader>cd :<C-u>CD<CR>
+
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
