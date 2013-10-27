@@ -81,6 +81,7 @@ endif
 NeoBundleFetch 'Shougo/neobundle.vim'
 if s:meet_neocomplete_requirements()
     NeoBundle 'Shougo/neocomplete', {
+        \ 'lazy':1,
         \ 'autoload': {
         \       'insert': 1,
         \ }}
