@@ -93,6 +93,7 @@ else
 endif
 
 NeoBundle 'Align'
+NeoBundle 'tomasr/molokai'
 NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
@@ -100,7 +101,8 @@ NeoBundle 'tpope/vim-surround'
 "NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Yggdroot/indentLine'
+"NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/hahhah-vim'
 NeoBundle 'mattn/vim-airline-hahhah'
@@ -119,7 +121,7 @@ NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'mrtazz/simplenote.vim'
 
 " Python
-NeoBundle 'python.vim'
+"NeoBundle 'python.vim'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
@@ -142,7 +144,7 @@ NeoBundleCheck
 " General Settings{{{
 " ==============================================================================
 
-" Enable color changing when reloading .vimrc.
+" Enable olor changing when reloading .vimrc.
 if !has('gui_running') && !s:iswin
     " For Vim.
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
@@ -234,8 +236,14 @@ set modeline
 " Sets how much history and undo vim remombers.
 set history=1000
 
+" Set colorscheme
+colorscheme molokai
+"let g:molokai_original = 1
+set background=dark
+
 set clipboard=unnamed,autoselect
 set t_Co=256
+
 set textwidth=0
 if exists('&colorcolumn')
     set colorcolumn=+1
@@ -405,6 +413,10 @@ let g:memolist_memo_suffix = "md"
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
+
+" vim-indent-guides
+hi IndentGuidesOdd ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
 
 " }}}
 
