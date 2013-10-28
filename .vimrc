@@ -238,9 +238,9 @@ set modeline
 set history=1000
 
 " Set colorscheme
-colorscheme molokai
+"colorscheme molokai
 "let g:molokai_original = 1
-set background=dark
+"set background=dark
 
 set clipboard=unnamed,autoselect
 set t_Co=256
