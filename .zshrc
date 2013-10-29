@@ -27,7 +27,7 @@ bindkey "^N" history-beginning-search-forward-end
 
 
 setopt auto_cd
-function chpwd() { ls -Glh }
+function chpwd() { ls -G -lh }
 setopt auto_pushd
 setopt nolistbeep
 autoload -Uz colors
