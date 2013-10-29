@@ -356,7 +356,7 @@ if s:meet_neocomplete_requirements()
     inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
     inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     if !exists('g:neocomplete#sources#omni#input_patterns')
         let g:neocomplete#sources#omni#input_patterns = {}
     endif"}}}
