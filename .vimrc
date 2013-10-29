@@ -1,5 +1,4 @@
-" My .vimrc
-" vim: set foldmethod=marker:
+" My .vimrc " vim: set foldmethod=marker:
 "   ^    ^    ^    ^    ^    ^    ^    ^
 "  /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
 " <___><___><___><___><___><___><___><___>
@@ -235,6 +234,9 @@ set modeline
 " Sets how much history and undo vim remombers.
 set history=1000
 
+" Do not show doc preview when using neocomplete.
+set completeopt-=preview
+
 set clipboard=unnamed,autoselect
 set t_Co=256
 set textwidth=0
@@ -342,7 +344,7 @@ if s:meet_neocomplete_requirements()
     let g:neocmplete#keyword_patterns['default'] = '\h\w*'
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        return pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
+        return neocomplete#smart_close_popup() . "\<CR>"
     endfunction
     inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>"
     inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
@@ -406,6 +408,9 @@ let g:memolist_memo_suffix = "md"
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
+
+" vim2hs
+let g:haskell_conceal = 0
 
 " }}}
 
