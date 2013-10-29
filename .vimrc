@@ -1,5 +1,4 @@
-" My .vimrc
-" vim: set foldmethod=marker:
+" My .vimrc " vim: set foldmethod=marker:
 "   ^    ^    ^    ^    ^    ^    ^    ^
 "  /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
 " <___><___><___><___><___><___><___><___>
@@ -237,6 +236,8 @@ set modeline
 " Sets how much history and undo vim remombers.
 set history=1000
 
+" Do not show doc preview when using neocomplete.
+set completeopt-=preview
 " Set colorscheme
 "colorscheme molokai
 "let g:molokai_original = 1
@@ -415,6 +416,8 @@ let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 
+" vim2hs
+let g:haskell_conceal = 0
 " vim-indent-guides
 hi IndentGuidesOdd ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
