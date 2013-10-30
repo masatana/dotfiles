@@ -1,4 +1,5 @@
-" My .vimrc " vim: set foldmethod=marker:
+" My .vimrc
+" vim: set foldmethod=marker:
 "   ^    ^    ^    ^    ^    ^    ^    ^
 "  /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
 " <___><___><___><___><___><___><___><___>
@@ -31,6 +32,7 @@ endif
 
 " Use <Leader> in global plugin.
 "let g:mapleader=','
+" Can't use <SPACE> in this expression.
 let g:mapleader=' '
 
 " Environment variables.
@@ -289,7 +291,6 @@ set cmdheight=2
 "let g:molokai_original = 1
 "set background=dark
 
-set clipboard=unnamed,autoselect
 set t_Co=256
 
 set textwidth=0
@@ -306,6 +307,11 @@ set matchpairs& matchpairs+=<:>
 " Disable bell.
 set t_vb=
 set novisualbell
+
+" When running on terminal, use |clipboard-exclude|
+" to disable connecting to X server
+" not to be killed with X server.
+set clipboard+=unnamed,autoselect
 
 " Read .vimrc.local if exists.
 if filereadable(expand('~/.vimrc.local'))
