@@ -1,4 +1,5 @@
-" My .vimrc " vim: set foldmethod=marker:
+" My .vimrc
+" vim: set foldmethod=marker:
 "   ^    ^    ^    ^    ^    ^    ^    ^
 "  /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
 " <___><___><___><___><___><___><___><___>
@@ -31,6 +32,7 @@ endif
 
 " Use <Leader> in global plugin.
 "let g:mapleader=','
+" Can't use <SPACE> in this expression.
 let g:mapleader=' '
 
 " Environment variables.
@@ -141,6 +143,47 @@ NeoBundleCheck
 " }}}
 
 " ==============================================================================
+" Encoding{{{
+" ==============================================================================
+set encoding=utf-8
+source $HOME/.vim/encode.vim
+" }}}
+
+" ==============================================================================
+" Remappings{{{
+" ==============================================================================
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+" Now, <C-c> and <Esc> are exactly the same.
+inoremap <C-c> <Esc>
+
+noremap <BS> <C-h>
+noremap! <BS> <C-h>
+
+nmap <silent> <C-c> :nohlsearch<CR>
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+
+nnoremap j gj
+nnoremap k gk
+nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+" }}}
+
+" ==============================================================================
 " General Settings{{{
 " ==============================================================================
 
@@ -217,8 +260,8 @@ set backspace=indent,eol,start
 " Do not use a swapfile for the buffer.
 set noswapfile
 
-" The last window always have a status line.
-set laststatus=2
+" Show the lastline as possible.
+set display=lastline
 
 " When `useopen`, jump to the first open window that contains the specified
 " buffer.
@@ -238,12 +281,16 @@ set history=1000
 
 " Do not show doc preview when using neocomplete.
 set completeopt-=preview
+
+" The last window always have a status line.
+set laststatus=2
+set cmdheight=2
+
 " Set colorscheme
 "colorscheme molokai
 "let g:molokai_original = 1
 "set background=dark
 
-set clipboard=unnamed,autoselect
 set t_Co=256
 
 set textwidth=0
@@ -261,44 +308,15 @@ set matchpairs& matchpairs+=<:>
 set t_vb=
 set novisualbell
 
+" When running on terminal, use |clipboard-exclude|
+" to disable connecting to X server
+" not to be killed with X server.
+set clipboard+=unnamed,autoselect
+
 " Read .vimrc.local if exists.
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
-" }}}
-
-" ==============================================================================
-" Remappings{{{
-" ==============================================================================
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-" Now, <C-c> and <Esc> are exactly the same.
-inoremap <C-c> <Esc>
-
-noremap <BS> <C-h>
-noremap! <BS> <C-h>
-
-nmap <silent> <C-c> :nohlsearch<CR>
-
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-
-nnoremap j gj
-nnoremap k gk
-nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
-
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
 " }}}
 
 " ==============================================================================
@@ -357,7 +375,7 @@ if s:meet_neocomplete_requirements()
     inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
     inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     if !exists('g:neocomplete#sources#omni#input_patterns')
         let g:neocomplete#sources#omni#input_patterns = {}
     endif"}}}
@@ -422,13 +440,6 @@ let g:haskell_conceal = 0
 hi IndentGuidesOdd ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
-" }}}
-
-" ==============================================================================
-" Encoding{{{
-" ==============================================================================
-set encoding=utf-8
-source $HOME/.vim/encode.vim
 " }}}
 
 " ==============================================================================
