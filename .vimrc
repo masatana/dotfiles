@@ -141,6 +141,47 @@ NeoBundleCheck
 " }}}
 
 " ==============================================================================
+" Encoding{{{
+" ==============================================================================
+set encoding=utf-8
+source $HOME/.vim/encode.vim
+" }}}
+
+" ==============================================================================
+" Remappings{{{
+" ==============================================================================
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+" Now, <C-c> and <Esc> are exactly the same.
+inoremap <C-c> <Esc>
+
+noremap <BS> <C-h>
+noremap! <BS> <C-h>
+
+nmap <silent> <C-c> :nohlsearch<CR>
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+
+nnoremap j gj
+nnoremap k gk
+nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+" }}}
+
+" ==============================================================================
 " General Settings{{{
 " ==============================================================================
 
@@ -217,8 +258,8 @@ set backspace=indent,eol,start
 " Do not use a swapfile for the buffer.
 set noswapfile
 
-" The last window always have a status line.
-set laststatus=2
+" Show the lastline as possible.
+set display=lastline
 
 " When `useopen`, jump to the first open window that contains the specified
 " buffer.
@@ -238,6 +279,11 @@ set history=1000
 
 " Do not show doc preview when using neocomplete.
 set completeopt-=preview
+
+" The last window always have a status line.
+set laststatus=2
+set cmdheight=2
+
 " Set colorscheme
 "colorscheme molokai
 "let g:molokai_original = 1
@@ -265,40 +311,6 @@ set novisualbell
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
-" }}}
-
-" ==============================================================================
-" Remappings{{{
-" ==============================================================================
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-" Now, <C-c> and <Esc> are exactly the same.
-inoremap <C-c> <Esc>
-
-noremap <BS> <C-h>
-noremap! <BS> <C-h>
-
-nmap <silent> <C-c> :nohlsearch<CR>
-
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-
-nnoremap j gj
-nnoremap k gk
-nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
-
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
 " }}}
 
 " ==============================================================================
@@ -422,13 +434,6 @@ let g:haskell_conceal = 0
 hi IndentGuidesOdd ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
-" }}}
-
-" ==============================================================================
-" Encoding{{{
-" ==============================================================================
-set encoding=utf-8
-source $HOME/.vim/encode.vim
 " }}}
 
 " ==============================================================================
