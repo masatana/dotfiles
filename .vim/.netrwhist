@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/masatana/dotfiles/.vim'
 let g:netrw_dirhist_2='/home/masatana/2ch_crawler'
 let g:netrw_dirhist_3='/var/www'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/masatana/yosog/Settings'
 let g:netrw_dirhist_6='/home/masatana/2ch_crawler/img/2013-10-25/デブを戒めるような画像ない？(             ・ω・｀            )'
 let g:netrw_dirhist_7='/home/masatana/2ch_crawler'
 let g:netrw_dirhist_8='/Users/masatana/memo'
+let g:netrw_dirhist_9='/home/www-data/public_html/mymatome/mymatome'

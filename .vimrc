@@ -95,10 +95,10 @@ else
 endif
 
 NeoBundle 'Align'
-NeoBundle 'tomasr/molokai'
+"NeoBundle 'tomasr/molokai'
 NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 "NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
