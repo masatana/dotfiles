@@ -121,6 +121,7 @@ NeoBundle 'Shougo/vimproc', {
 "NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'mrtazz/simplenote.vim'
+NeoBundle 'kien/ctrlp.vim'
 
 " Python
 "NeoBundle 'python.vim'
