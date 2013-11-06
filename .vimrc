@@ -36,11 +36,11 @@ endif
 let g:mapleader=' '
 
 " Environment variables.
-if !exists(" $MYVIMRC" )
+if !exists("$MYVIMRC" )
     let $MYVIMRC = expand('~/.vimrc')
 endif
 
-if !exists(" $MYGVIMRC" )
+if !exists("$MYGVIMRC" )
     let $MYGVIMRC = expand('~/.gvimrc')
 endif
 
