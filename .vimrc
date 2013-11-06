@@ -122,6 +122,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'mrtazz/simplenote.vim'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'rhysd/clever-f.vim'
 
 " Python
 "NeoBundle 'python.vim'
@@ -440,6 +441,9 @@ let g:haskell_conceal = 0
 " vim-indent-guides
 hi IndentGuidesOdd ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
+
+" clever-f.vim
+let g:clever_f_chars_match_any_signs = ";"
 
 " }}}
 
