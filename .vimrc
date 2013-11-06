@@ -285,7 +285,7 @@ set completeopt-=preview
 
 " The last window always have a status line.
 set laststatus=2
-set cmdheight=2
+"set cmdheight=2
 
 " Set colorscheme
 "colorscheme molokai
