@@ -98,7 +98,7 @@ NeoBundle 'Align'
 "NeoBundle 'tomasr/molokai'
 NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
-"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 "NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
@@ -154,6 +154,13 @@ source $HOME/.vim/encode.vim
 " ==============================================================================
 " Remappings{{{
 " ==============================================================================
+
+" Invalidate forced termination.
+noremap ZZ <Nop>
+noremap ZQ <Nop>
+command! -nargs=0 Q :q!
+command! -nargs=0 QQ :qa!
+
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -287,6 +294,9 @@ set completeopt-=preview
 " The last window always have a status line.
 set laststatus=2
 "set cmdheight=2
+
+" Indicates a fast terminal connection.
+set ttyfast
 
 " Set colorscheme
 "colorscheme molokai
