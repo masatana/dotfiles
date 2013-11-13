@@ -184,6 +184,8 @@ nnoremap # #zz
 
 nnoremap j gj
 nnoremap k gk
+
+nnoremap P $p
 nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
 
 nnoremap <C-j> <C-w>j
