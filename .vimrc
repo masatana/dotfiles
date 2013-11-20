@@ -463,7 +463,7 @@ let g:clever_f_chars_match_any_signs = ";"
 " Settings for each filetypes{{{
 " ==============================================================================
 autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
-autocmd FileType html setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
+autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
