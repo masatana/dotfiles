@@ -82,3 +82,4 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+[[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
