@@ -40,6 +40,7 @@ alias mv="mv -i -v"
 alias du="du -h"
 alias df="df -h"
 alias vimrc="vim ~/.vimrc"
+alias tree="tree -N"
 
 PROMPT="
 %{$fg_bold[blue]%}${HOST} %F{blue}%/% %f

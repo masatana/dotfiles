@@ -184,6 +184,8 @@ nnoremap # #zz
 
 nnoremap j gj
 nnoremap k gk
+
+nnoremap P $p
 nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
 
 nnoremap <C-j> <C-w>j
@@ -255,7 +257,7 @@ set hlsearch
 set ruler
 
 " The cursor line will always be in the middle of the window.
-set scrolloff=999
+"set scrolloff=999
 
 " When on, splitting a window will put the new window below the current one.
 set splitbelow
