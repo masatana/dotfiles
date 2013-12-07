@@ -40,6 +40,7 @@ alias mv="mv -i -v"
 alias du="du -h"
 alias df="df -h"
 alias vimrc="vim ~/.vimrc"
+alias tree="tree -N"
 
 PROMPT="
 %{$fg_bold[blue]%}${HOST} %F{blue}%/% %f
@@ -82,3 +83,4 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+[[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
