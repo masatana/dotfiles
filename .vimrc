@@ -49,6 +49,11 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 
+" Set for go lang.
+if $GOPATH != ''
+    set rtp+=$GOROOT/misc/vim
+endif
+
 " }}}
 
 " ==============================================================================
