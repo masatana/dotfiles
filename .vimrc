@@ -49,10 +49,6 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 
-" Set for go lang.
-if $GOPATH != ''
-    set rtp+=$GOROOT/misc/vim
-endif
 
 " }}}
 
@@ -324,8 +320,8 @@ if exists('&colorcolumn')
 endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 "set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-"set list
-"set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
 
@@ -357,6 +353,7 @@ let g:indentLine_color_term=239
 " syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+let g:syntastic_go_checkers=['go', 'golint']
 
 " taglist
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
@@ -478,8 +475,13 @@ autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabsto
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
-autocmd FileType go setlocal rtp+=$GOROOT/misc/vim
+"autocmd FileType go setlocal noexpandtab
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown textwidth=80
+" Set for go lang.
+if $GOPATH != ''
+    set rtp+=$GOROOT/misc/vim
+    set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+endif
 " }}}
 
 " Scouter
