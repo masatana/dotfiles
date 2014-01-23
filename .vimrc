@@ -49,6 +49,11 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 
+" Set for go lang.
+if $GOPATH != ''
+    set rtp+=$GOROOT/misc/vim
+    set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+endif
 
 " }}}
 
@@ -475,13 +480,8 @@ autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabsto
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
-"autocmd FileType go setlocal noexpandtab
+autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown textwidth=80
-" Set for go lang.
-if $GOPATH != ''
-    set rtp+=$GOROOT/misc/vim
-    set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-endif
 " }}}
 
 " Scouter
