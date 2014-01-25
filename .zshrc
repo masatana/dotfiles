@@ -61,7 +61,16 @@ case "`uname`" in
     ;;
 esac
 
+# for haskell
 export PATH=$PATH:$HOME/.cabal/bin/
+
+# for go lang
+if [ -x "`which go`" ]; then
+    export GOROOT=`go env GOROOT`
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
+
 
 SSH_ENV=$HOME/.ssh/environment
 function start_agent {
