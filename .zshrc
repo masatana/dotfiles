@@ -93,4 +93,33 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+
+# tmux (auto start)
+is_tmux_running() {
+    [ ! -z "$TMUX" ]
+}
+has_shell_started_interactively() {
+    [ ! -z "$PS1" ]
+}
+
+resolve_alias() {
+    cmd="$1"
+    while
+        whence "$cmd" >/dev/null 2>/dev/null && [ "$(whence "$cmd")" != "$cmd" ]
+    do
+        cmd=$(whence "$cmd")
+    done
+    echo "$cmd"
+}
+if ! is_tmux_running && has_shell_started_interactively; then
+    for cmd in tmux; do
+        if whence $cmd >/dev/null 2>/dev/null; then
+            $(resolve_alias "$cmd")
+            break
+        fi
+    done
+fi
+
+# local settings (e.g. password)
 [[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
