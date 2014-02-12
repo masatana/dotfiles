@@ -58,6 +58,7 @@ case "`uname`" in
     ;;
     Linux)
         alias ls="ls --color=auto -lh"
+        export PATH=$PATH:/home/masatana/bin/src/go/bin/
     ;;
 esac
 
