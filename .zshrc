@@ -54,16 +54,16 @@ case "`uname`" in
         fi
         alias ls="ls -G -lh"
         alias py3="python3"
-        export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin:/usr/local/bin/
+        export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin:/usr/local/bin
     ;;
     Linux)
         alias ls="ls --color=auto -lh"
-        export PATH=$PATH:/home/masatana/bin/src/go/bin/
+        export PATH=$PATH:/home/masatana/bin/src/go/bin
     ;;
 esac
 
 # for haskell
-export PATH=$PATH:$HOME/.cabal/bin/
+export PATH=$PATH:$HOME/.cabal/bin
 
 # for go lang
 if [ -x "`which go`" ]; then
