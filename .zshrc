@@ -33,6 +33,7 @@ setopt nolistbeep
 autoload -Uz colors
 export LSCOLORS=exfxcxdxbxegedabagacad
 alias grep="grep --color=auto"
+export CLICOLOR=true
 
 alias rm="rm -i"
 alias cp="cp -i"
