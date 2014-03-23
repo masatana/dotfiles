@@ -1,8 +1,24 @@
 #!/bin/bash
 
-DOT_FILES=(.zshrc .vimrc .vim .tmux.conf .zshenv)
+readonly DOT_FILES=(.zshrc .vimrc .vim .tmux.conf .zshenv)
 
-for file in ${DOT_FILES[@]}
+while getopts u OPT
 do
-	ln -s $HOME/dotfiles/$file $HOME/$file
+    case $OPT in
+        "u" ) FLG_UNINSTALL="TRUE";;
+    esac
 done
+
+if [ $FLG_UNINSTALL ]; then
+    for file in ${DOT_FILES[@]}
+    do
+        if [ -e $HOME/$file ]; then
+            rm -rf $HOME/$file
+        fi
+    done
+else
+    for file in ${DOT_FILES[@]}
+    do
+        ln -fvs $HOME/dotfiles/$file $HOME/$file
+    done
+fi
