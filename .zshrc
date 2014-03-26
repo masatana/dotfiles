@@ -17,6 +17,7 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt hist_ignore_dups
 setopt share_history
+setopt extended_history
 setopt hist_reduce_blanks
 
 autoload history-search-end
