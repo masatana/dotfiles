@@ -19,6 +19,6 @@ if [ $FLG_UNINSTALL ]; then
 else
     for file in ${DOT_FILES[@]}
     do
-        ln -fvs $HOME/dotfiles/$file $HOME/$file
+        ln -fvsn $HOME/dotfiles/$file $HOME/$file
     done
 fi
