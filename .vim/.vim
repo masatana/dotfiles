@@ -1,1 +1,0 @@
-/home/masatana/dotfiles/.vim
