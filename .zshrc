@@ -69,6 +69,7 @@ case "`uname`" in
         #export PATH=/usr/local/bin:/usr/local/sbin:$PATH
     ;;
     Linux)
+        alias ls="ls --color=auto -lh" # for debian
         #export PATH=$PATH:/home/masatana/bin/src/go/bin # TODO 消したい
     ;;
 esac

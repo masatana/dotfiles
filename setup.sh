@@ -21,4 +21,10 @@ else
     do
         ln -fvsn $HOME/dotfiles/$file $HOME/$file
     done
+    # git setting (assume that git has been already installed)
+    if [ ! -e $HOME/.gitconfig ]; then
+        git config --global user.name "masatana"
+        git config --global user.email "plaza.tumbling@gmail.com"
+        git config --global color.ui auto
+    fi
 fi
