@@ -505,6 +505,7 @@ function! s:ChangeCurrentDir(directory, bang)
 endfunction
 nnoremap <silent><Leader>cd :<C-u>CD<CR>
 
+" If exsits local settings
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
