@@ -102,7 +102,7 @@ endif
 
 NeoBundle 'Align'
 "NeoBundle 'tomasr/molokai'
-NeoBundle 'taglist.vim'
+"NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
@@ -359,12 +359,6 @@ let g:indentLine_color_term=239
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_go_checkers=['go', 'golint']
-
-" taglist
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_Use_Right_Window = 1 " 右側でtaglistのWindowを表示
-let Tlist_Exit_OnlyWindow = 1 " taglistのWindowが最後ならばVimを閉じる
-let Tlist_Show_One_File = 1 " 現在編集中のSourceのtagしか表示しない
 
 " quickrun
 let g:quickrun_config = {
