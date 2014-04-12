@@ -55,6 +55,7 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
 # bindkey settings
+bindkey -e
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
@@ -70,7 +71,6 @@ case "`uname`" in
     ;;
     Linux)
         alias ls="ls --color=auto -lh" # for debian
-        #export PATH=$PATH:/home/masatana/bin/src/go/bin # TODO 消したい
     ;;
 esac
 
