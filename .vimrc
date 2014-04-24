@@ -350,7 +350,7 @@ endif
 " Settings for each bundles{{{
 " ==============================================================================
 " airline
-let g:airline_theme='badwolf'
+let g:airline_theme='molokai'
 
 " indentLine
 let g:indentLine_char="¦"
