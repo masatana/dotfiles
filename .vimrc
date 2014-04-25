@@ -130,6 +130,7 @@ NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'mrtazz/simplenote.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'fatih/vim-go.git'
 
 " Python
 "NeoBundle 'python.vim'
@@ -350,7 +351,7 @@ endif
 " Settings for each bundles{{{
 " ==============================================================================
 " airline
-let g:airline_theme='badwolf'
+let g:airline_theme='molokai'
 
 " indentLine
 let g:indentLine_char="¦"
