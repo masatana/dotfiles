@@ -12,6 +12,7 @@ if [ -x "`which go`" ]; then
 fi
 
 path=(
+    $HOME/bin/bin(N-/)
     $HOME/bin(N-/)
     $HOME/.cabal/bin(N-/)
     /usr/local/bin(N-/)

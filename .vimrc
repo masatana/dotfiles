@@ -85,6 +85,7 @@ if has("vim_starting" )
     call neobundle#rc(expand("~/.vim/bundle/" ))
 endif
 
+let g:neobundle_default_git_protocol='git'
 NeoBundleFetch 'Shougo/neobundle.vim'
 if s:meet_neocomplete_requirements()
     NeoBundle 'Shougo/neocomplete', {
