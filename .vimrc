@@ -9,6 +9,12 @@
 " ==============================================================================
 " Initialize{{{
 " ==============================================================================
+" UTF-8!!! (Other settings such as fileencoding is on the other place.
+scriptencoding utf-8
+
+" If installed vim is not tiny nor small, do not load the code below.
+if !1 | finish | endif
+
 " Check platform.
 let s:iswin = has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
