@@ -22,6 +22,9 @@ path=(
     /sbin(N-/)
     $path
 )
+gopath=(
+    $HOME/go
+)
 
 export EDITOR=vim
 export KCODE=u
