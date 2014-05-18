@@ -38,6 +38,8 @@ setopt hist_reduce_blanks
 setopt auto_cd
 setopt auto_pushd
 setopt nolistbeep
+setopt pushd_ignore_dups
+setopt hist_ignore_space
 
 # alias settings
 alias grep="grep --color=auto"
