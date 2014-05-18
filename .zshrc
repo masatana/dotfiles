@@ -49,6 +49,7 @@ alias df="df -h"
 alias vimrc="vim ~/.vimrc"
 alias tree="tree -N"
 alias ls="ls -lh"
+alias man="man --locale=us"
 
 # zle settings
 zle -N history-beginning-search-backward-end history-search-end
