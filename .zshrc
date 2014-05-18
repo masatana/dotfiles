@@ -38,6 +38,8 @@ setopt hist_reduce_blanks
 setopt auto_cd
 setopt auto_pushd
 setopt nolistbeep
+setopt pushd_ignore_dups
+setopt hist_ignore_space
 
 # alias settings
 alias grep="grep --color=auto"
@@ -49,6 +51,7 @@ alias df="df -h"
 alias vimrc="vim ~/.vimrc"
 alias tree="tree -N"
 alias ls="ls -lh"
+alias man="man --locale=us"
 
 # zle settings
 zle -N history-beginning-search-backward-end history-search-end
