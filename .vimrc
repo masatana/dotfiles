@@ -137,7 +137,7 @@ NeoBundle 'mrtazz/simplenote.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'fatih/vim-go.git'
+NeoBundle 'fatih/vim-go.git'
 
 " Python
 "NeoBundle 'python.vim'

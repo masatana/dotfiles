@@ -15,15 +15,13 @@ path=(
     $HOME/bin/bin(N-/)
     $HOME/bin(N-/)
     $HOME/.cabal/bin(N-/)
+    $HOME/go/bin
     /usr/local/bin(N-/)
     /usr/bin(N-/)
     /bin(N-/)
     /usr/sbin(N-/)
     /sbin(N-/)
     $path
-)
-gopath=(
-    $HOME/go
 )
 
 export EDITOR=vim
