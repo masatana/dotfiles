@@ -321,6 +321,9 @@ set laststatus=2
 " Indicates a fast terminal connection.
 set ttyfast
 
+" Put Vim in Paste mode
+set paste
+
 " Set colorscheme
 "colorscheme molokai
 "let g:molokai_original = 1
