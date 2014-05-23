@@ -326,6 +326,9 @@ set laststatus=2
 " Indicates a fast terminal connection.
 set ttyfast
 
+" Put Vim in Paste mode
+"set paste
+
 " Set colorscheme
 "colorscheme molokai
 "let g:molokai_original = 1
@@ -357,13 +360,23 @@ set clipboard+=unnamed,autoselect
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
+
+" Highlight code in markdown
+" http://mattn.kaoriya.net/software/vim/20140523124903.htm
+let g:markdown_fenced_languages = [
+\       'python',
+\       'json=javascript',
+\       'go',
+\       'css',
+\       'sh',
+\]
 " }}}
 
 " ==============================================================================
 " Settings for each bundles{{{
 " ==============================================================================
 " airline
-let g:airline_theme='molokai'
+let g:airline_theme='wombat'
 
 " indentLine
 let g:indentLine_char="¦"
