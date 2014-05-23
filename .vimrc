@@ -322,7 +322,7 @@ set laststatus=2
 set ttyfast
 
 " Put Vim in Paste mode
-set paste
+"set paste
 
 " Set colorscheme
 "colorscheme molokai
