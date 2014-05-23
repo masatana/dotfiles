@@ -59,6 +59,9 @@ augroup END
 if $GOPATH != ''
     set rtp+=$GOROOT/misc/vim
     set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+    let isGoInstalled = 1 " True
+else
+    let isGoInstalled = 0 " False
 endif
 
 " }}}
@@ -67,7 +70,7 @@ endif
 " Neobundle{{{
 " ==============================================================================
 " Auto install NeoBundle
-let isNeoBundleAlreadyInstalled = 1
+let isNeoBundleInstalled = 1
 let neobundle_readme = expand('~/.vim/bundle/neobundle.vim/README.md')
 if !filereadable(neobundle_readme)
     echo "Installing NeoBundle..."
@@ -75,7 +78,7 @@ if !filereadable(neobundle_readme)
     silent !mkdir -p $HOME/.vim/bundle
     silent !git clone https://github.com/Shougo/neobundle.vim
                 \ $HOME/.vim/bundle/neobundle.vim
-    let isNeoBundleAlreadyInstalled = 0
+    let isNeoBundleInstalled = 0
 endif
 
 
@@ -137,7 +140,9 @@ NeoBundle 'mrtazz/simplenote.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'fatih/vim-go.git'
+if isGoInstalled
+    "NeoBundle 'fatih/vim-go.git'
+endif
 
 " Python
 "NeoBundle 'python.vim'
@@ -150,7 +155,7 @@ NeoBundle 'dag/vim2hs'
 filetype plugin indent on
 
 " First-time plugins installation.
-if isNeoBundleAlreadyInstalled == 0
+if isNeoBundleInstalled == 0
     echo "Installing Bundles, please ignore key map error messages."
     echo ""
 endif
