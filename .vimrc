@@ -322,7 +322,7 @@ set laststatus=2
 set ttyfast
 
 " Put Vim in Paste mode
-set paste
+"set paste
 
 " Set colorscheme
 "colorscheme molokai
@@ -371,7 +371,7 @@ let g:markdown_fenced_languages = [
 " Settings for each bundles{{{
 " ==============================================================================
 " airline
-let g:airline_theme='molokai'
+let g:airline_theme='wombat'
 
 " indentLine
 let g:indentLine_char="¦"
