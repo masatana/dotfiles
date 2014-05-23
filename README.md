@@ -2,16 +2,19 @@
 
 ## How to Setup
 
-    $ mkdir ~/dotfiles
-    $ git clone git@github.com:masatana/dotfiles.git ~/dotfiles
-    $ cd dotfiles
-    $ chmod 700 setup.sh
-    $ ./setup.sh
-    $ vim ~/.vimrc
-
+```sh
+$ mkdir ~/dotfiles
+$ git clone git@github.com:masatana/dotfiles.git ~/dotfiles
+$ cd dotfiles
+$ chmod 700 setup.sh
+$ ./setup.sh
+$ vim ~/.vimrc
+```
 ## How to Uninstall
 
-    $ ./setup.sh -u
+```sh
+$ ./setup.sh -u
+```
 
 ## Note
 If you want to write sensitive information, please write it in .vimrc.local

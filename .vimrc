@@ -355,6 +355,16 @@ set clipboard+=unnamed,autoselect
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
+
+" Highlight code in markdown
+" http://mattn.kaoriya.net/software/vim/20140523124903.htm
+let g:markdown_fenced_languages = [
+\       'python',
+\       'json=javascript',
+\       'go',
+\       'css',
+\       'sh',
+\]
 " }}}
 
 " ==============================================================================
