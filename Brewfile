@@ -9,3 +9,6 @@ install tmux || true
 install wget || true
 install nkf || true
 install go || true
+install gcc || true
+install gfortran || true
+install freetype || true

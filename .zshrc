@@ -51,7 +51,6 @@ alias df="df -h"
 alias vimrc="vim ~/.vimrc"
 alias tree="tree -N"
 alias ls="ls -lh"
-alias man="man --locale=us"
 alias ipy="ipython3 --pylab"
 
 # zle settings
@@ -70,11 +69,10 @@ case "`uname`" in
         if [ -d /Applications/MacVim.app/ ]; then
             alias mvim='/Applications/MacVim.app/Contents/MacOS/mvim'
         fi
-        #export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin:/usr/local/bin
-        #export PATH=/usr/local/bin:/usr/local/sbin:$PATH
     ;;
     Linux)
         alias ls="ls --color=auto -lh" # for debian
+        alias man="man --locale=us"
     ;;
 esac
 
@@ -100,10 +98,6 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-
-path=(
-    $path(N-/^W)
-)
 
 # local settings (e.g. password)
 [[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
