@@ -52,6 +52,7 @@ alias vimrc="vim ~/.vimrc"
 alias tree="tree -N"
 alias ls="ls -lh"
 alias man="man --locale=us"
+alias ipy="ipython3 --pylab"
 
 # zle settings
 zle -N history-beginning-search-backward-end history-search-end
