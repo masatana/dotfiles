@@ -13,3 +13,5 @@ install gcc || true
 install gfortran || true
 install freetype || true
 install mercurial || true
+
+install reattach-to-user-namespace
