@@ -12,3 +12,4 @@ install go || true
 install gcc || true
 install gfortran || true
 install freetype || true
+install mercurial || true

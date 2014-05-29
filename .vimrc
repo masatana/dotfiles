@@ -141,7 +141,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
 if isGoInstalled
-    "NeoBundle 'fatih/vim-go.git'
+    NeoBundle 'fatih/vim-go'
 endif
 
 " Python
@@ -377,6 +377,12 @@ let g:markdown_fenced_languages = [
 " ==============================================================================
 " airline
 let g:airline_theme='wombat'
+
+function! AirlineInit()
+    let g:airline_section_a = airline#section#create(['mode'])
+    let g:airline_section_c = airline#section#create(['%{getcwd()}', '/', 'file'])
+endfunction
+autocmd VimEnter * call AirlineInit()
 
 " indentLine
 let g:indentLine_char="¦"
