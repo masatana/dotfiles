@@ -141,7 +141,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
 if isGoInstalled
-    "NeoBundle 'fatih/vim-go.git'
+    NeoBundle 'fatih/vim-go.git'
 endif
 
 " Python
