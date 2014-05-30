@@ -140,8 +140,9 @@ NeoBundle 'mrtazz/simplenote.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 if isGoInstalled
-    NeoBundle 'fatih/vim-go.git'
+    NeoBundle 'fatih/vim-go'
 endif
 
 " Python
@@ -378,6 +379,12 @@ let g:markdown_fenced_languages = [
 " airline
 let g:airline_theme='wombat'
 
+function! AirlineInit()
+    let g:airline_section_a = airline#section#create(['mode'])
+    let g:airline_section_c = airline#section#create(['%{getcwd()}', '/', 'file'])
+endfunction
+autocmd VimEnter * call AirlineInit()
+
 " indentLine
 let g:indentLine_char="¦"
 let g:indentLine_color_term=239
@@ -490,6 +497,20 @@ hi IndentGuidesEven ctermbg=darkgrey
 
 " clever-f.vim
 let g:clever_f_chars_match_any_signs = ";"
+
+" unite.vim
+nnoremap [unite] <Nop>
+nmap <Leader>f [unite]
+
+let g:unite_enable_start_insert=1
+
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
+nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
+au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
+au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
+au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 
 " }}}
 
