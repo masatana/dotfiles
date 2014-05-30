@@ -507,10 +507,10 @@ let g:unite_enable_start_insert=1
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-au FileType unite nnoremap <silent><buffer> <expr> <C-s> unite#do_action('split')
-au FileType unite inoremap <silent><buffer> <expr> <C-s> unite#do_action('split')
-au FileType unite nnoremap <silent><buffer> <expr> <C-v> unite#do_action('vsplit')
-au FileType unite inoremap <silent><buffer> <expr> <C-v> unite#do_action('vsplit')
+au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
+au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
+au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
+au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 
 " }}}
 
