@@ -141,7 +141,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
 if isGoInstalled
-    "NeoBundle 'fatih/vim-go.git'
+    NeoBundle 'fatih/vim-go.git'
 endif
 
 " Python
@@ -331,8 +331,7 @@ set ttyfast
 
 " Set colorscheme
 "colorscheme molokai
-"let g:molokai_original = 1
-"set background=dark
+"let g:molokai_original = 1 "set background=dark
 
 set t_Co=256
 
@@ -376,7 +375,7 @@ let g:markdown_fenced_languages = [
 " Settings for each bundles{{{
 " ==============================================================================
 " airline
-let g:airline_theme='wombat'
+let g:airline_theme='molokai'
 
 " indentLine
 let g:indentLine_char="¦"
