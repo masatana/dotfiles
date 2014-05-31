@@ -503,7 +503,7 @@ nmap <Leader>f [unite]
 
 let g:unite_enable_start_insert=1
 
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
 nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
