@@ -190,7 +190,6 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
-" Now, <C-c> and <Esc> are exactly the same.
 inoremap <C-c> <Esc>
 
 noremap <BS> <C-h>
@@ -506,10 +505,14 @@ let g:unite_enable_start_insert=1
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
 nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
+au FileType unite nnoremap <silent> <buffer> <C-c><C-c> :<C-u>q<CR>
+au FileType unite inoremap <silent> <buffer> <C-c><C-c> <Esc>:<C-u>q<CR>
 
 " }}}
 
