@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 if [ -z "$LANG" ]; then
-    export LANG=ja_JP.UTF-8
+    export LANG=en_US.UTF-8
 fi
 
 # ignore duplicate path

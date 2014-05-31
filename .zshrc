@@ -40,6 +40,8 @@ setopt auto_pushd
 setopt nolistbeep
 setopt pushd_ignore_dups
 setopt hist_ignore_space
+setopt noflowcontrol
+stty -ixon
 
 # alias settings
 alias grep="grep --color=auto"
