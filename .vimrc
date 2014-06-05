@@ -218,6 +218,14 @@ vnoremap ( t(
 vnoremap ) t)
 onoremap ( t(
 onoremap ) t)
+
+" Emacs-like keybind in command-line mode
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-h> <Backspace>
+cnoremap <C-d> <Delete>
 " }}}
 
 " ==============================================================================
