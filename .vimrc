@@ -273,7 +273,7 @@ set shiftwidth=4 shiftround
 set showmatch
 
 " Display candidate supplement.
-set nowildmenu wildmode=list:longest,full
+set wildmenu wildmode=list:longest,full
 
 " Ignore the case of normal letters, when search.
 set ignorecase
