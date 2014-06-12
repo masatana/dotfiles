@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly DOT_FILES=(.zshrc .vimrc .vim .tmux.conf .zshenv .vimperatorrc)
+readonly DOT_FILES=(.zshrc .vimrc .vim .tmux.conf .zshenv .vimperatorrc .zprofile .zlogout)
 
 while getopts u OPT
 do
