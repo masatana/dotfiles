@@ -412,6 +412,7 @@ let g:quickrun_config = {
 
 let g:quickrun_config['markdown'] = {
             \    'outputter': 'browser',
+            \    'args': '--mathjax'
             \ }
 
 if s:meet_neocomplete_requirements()
@@ -533,7 +534,7 @@ autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
 autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown textwidth=80
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown
 " }}}
 
 " Scouter

@@ -25,9 +25,7 @@ SAVEHIST=100000
 SSH_ENV=$HOME/.ssh/environment
 
 # prompt settings
-PROMPT="
-%{$fg_bold[blue]%}${HOST} %F{blue}%/% %f
-[%n]$ "
+PROMPT="[%n@%{$fg_bold[blue]%}${HOST}] %F{blue}%/% %f "
 PROMPT2="%_%% "
 
 # setopt settings
