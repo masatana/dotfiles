@@ -16,6 +16,11 @@ $ vim ~/.vimrc
 $ ./setup.sh -u
 ```
 
+## Xubuntu setting
+
+```bash
+$ cp ./terminalrc ~/.config/xfce4/terminal/terminalrc
+
 ## Note
 If you want to write sensitive information, please write it in .vimrc.local
 

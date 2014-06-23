@@ -93,6 +93,7 @@ case "`uname`" in
         else
             start_agent;
         fi
+        alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
     ;;
 esac
 
