@@ -111,7 +111,7 @@ else
 endif
 
 NeoBundle 'Align'
-"NeoBundle 'tomasr/molokai'
+NeoBundle 'tomasr/molokai'
 "NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
@@ -339,8 +339,9 @@ set ttyfast
 "set paste
 
 " Set colorscheme
-"colorscheme molokai
-"let g:molokai_original = 1 "set background=dark
+colorscheme molokai
+let g:molokai_original = 1 "set background=dark
+let g:rehash256 = 0
 
 set t_Co=256
 
