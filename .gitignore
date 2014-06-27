@@ -3,3 +3,4 @@ _configtest.f
 /.vimrc.local
 /.vim/.netrwhist
 *.log
+*.sqlite
