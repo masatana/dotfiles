@@ -144,6 +144,7 @@ NeoBundle 'Shougo/neomru.vim'
 if isGoInstalled
     NeoBundle 'fatih/vim-go'
 endif
+NeoBundle 'moznion/hateblo.vim'
 
 " Python
 "NeoBundle 'python.vim'
