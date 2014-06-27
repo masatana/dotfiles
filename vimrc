@@ -522,6 +522,7 @@ nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
