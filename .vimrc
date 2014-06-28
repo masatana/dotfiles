@@ -339,6 +339,9 @@ set ttyfast
 "set paste
 
 " Set colorscheme
+autocmd ColorScheme * highlight Comment ctermfg=33 guifg=#009900
+autocmd ColorScheme * highlight String ctermfg=33 guifg=#009900
+autocmd ColorScheme * highlight Charcter ctermfg=22 guifg=#009900
 colorscheme molokai
 let g:molokai_original = 1 "set background=dark
 let g:rehash256 = 0
