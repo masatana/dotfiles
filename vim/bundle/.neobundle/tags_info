@@ -6,7 +6,7 @@ hateblo.vim
 memolist.vim
 molokai
 neobundle.vim
-neocomplcache
+neocomplete
 neomru.vim
 open-browser.vim
 simplenote.vim

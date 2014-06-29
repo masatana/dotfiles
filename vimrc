@@ -69,19 +69,6 @@ endif
 " ==============================================================================
 " Neobundle{{{
 " ==============================================================================
-" Auto install NeoBundle
-let isNeoBundleInstalled = 1
-let neobundle_readme = expand('~/.vim/bundle/neobundle.vim/README.md')
-if !filereadable(neobundle_readme)
-    echo "Installing NeoBundle..."
-    echo ""
-    silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim
-                \ $HOME/.vim/bundle/neobundle.vim
-    let isNeoBundleInstalled = 0
-endif
-
-
 function! s:meet_neocomplete_requirements()
     return has('lua') && ((v:version > 703) || ((v:version == 703) &&
                 \ has('patch885')))
@@ -152,16 +139,7 @@ NeoBundle 'moznion/hateblo.vim'
 " Haskell
 NeoBundle 'dag/vim2hs'
 
-
-
 filetype plugin indent on
-
-" First-time plugins installation.
-if isNeoBundleInstalled == 0
-    echo "Installing Bundles, please ignore key map error messages."
-    echo ""
-endif
-
 
 NeoBundleCheck
 " }}}

@@ -13,7 +13,7 @@ done
 if [ $FLG_UNINSTALL ]; then
     for file in ${DOT_FILES[@]}
     do
-        if [ -e $HOME/$file ]; then
+        if [ -e $HOME/$DOT$file ]; then
             rm -rf $HOME/$DOT$file
         fi
     done
@@ -27,5 +27,9 @@ else
         git config --global user.name "masatana"
         git config --global user.email "plaza.tumbling+github@gmail.com"
         git config --global color.ui auto
+    fi
+    if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
+	mkdir -p $HOME/.vim/bundle
+	git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
     fi
 fi
