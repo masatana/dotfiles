@@ -29,7 +29,7 @@ else
         git config --global color.ui auto
     fi
     if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
-	mkdir -p $HOME/.vim/bundle
-	git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+        mkdir -p $HOME/.vim/bundle
+        git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
     fi
 fi
