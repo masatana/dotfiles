@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/masatana/mywork/ML_for_Hackers'
+let g:netrw_dirhist_2='/Users/masatana/mywork/cli2ch/include'
