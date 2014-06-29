@@ -5,6 +5,8 @@ case ${UID} in
     ;;
 esac
 
+source $HOME/.zsh/git-prompt.sh
+
 # autoload settings
 autoload -U compinit && compinit
 autoload -Uz colors
@@ -25,6 +27,11 @@ SAVEHIST=100000
 SSH_ENV=$HOME/.ssh/environment
 
 # prompt settings
+setopt PROMPT_SUBST
+setopt TRANSIENT_RPROMPT
+precmd () {
+    RPROMPT='$(__git_ps1 "[%s]")'
+}
 PROMPT="[%n@%{$fg_bold[blue]%}${HOST}] %F{blue}%/% %f "
 PROMPT2="%_%% "
 
