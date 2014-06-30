@@ -107,6 +107,7 @@ case "`uname`" in
             start_agent;
         fi
         alias -s {png,jpg,bmp,PNG,JPG,BMP}=ristretto
+        alias -s {pdf}=evince
     ;;
 esac
 
