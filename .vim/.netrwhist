@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/masatana/bin/src/libevent-2.0.21-stable'
+let g:netrw_dirhist_2='/home/masatana/bin/src/BLAS'
+let g:netrw_dirhist_3='/home/masatana/native_language_identification/toefl11/log'
+let g:netrw_dirhist_4='/home/masatana/native_language_identification/corenlpdata/corenlp.leveldb'
