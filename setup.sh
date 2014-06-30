@@ -1,6 +1,7 @@
 #!/bin/bash
 
-readonly DOT_FILES=(.zshrc .vimrc .vim .tmux.conf .zshenv .vimperatorrc .zprofile .zlogout .ipython)
+readonly DOT_FILES=(zshrc vimrc vim tmux.conf zshenv vimperatorrc zprofile zlogout ipython zsh)
+readonly DOT="."
 
 while getopts u OPT
 do
@@ -12,19 +13,23 @@ done
 if [ $FLG_UNINSTALL ]; then
     for file in ${DOT_FILES[@]}
     do
-        if [ -e $HOME/$file ]; then
-            rm -rf $HOME/$file
+        if [ -e $HOME/$DOT$file ]; then
+            rm -rf $HOME/$DOT$file
         fi
     done
 else
     for file in ${DOT_FILES[@]}
     do
-        ln -fvsn $HOME/dotfiles/$file $HOME/$file
+        ln -fvsn $HOME/dotfiles/$file $HOME/$DOT$file
     done
     # git setting (assume that git has been already installed)
     if [ ! -e $HOME/.gitconfig ]; then
         git config --global user.name "masatana"
-        git config --global user.email "plaza.tumbling@gmail.com"
+        git config --global user.email "plaza.tumbling+github@gmail.com"
         git config --global color.ui auto
+    fi
+    if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
+        mkdir -p $HOME/.vim/bundle
+        git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
     fi
 fi

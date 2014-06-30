@@ -69,19 +69,6 @@ endif
 " ==============================================================================
 " Neobundle{{{
 " ==============================================================================
-" Auto install NeoBundle
-let isNeoBundleInstalled = 1
-let neobundle_readme = expand('~/.vim/bundle/neobundle.vim/README.md')
-if !filereadable(neobundle_readme)
-    echo "Installing NeoBundle..."
-    echo ""
-    silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim
-                \ $HOME/.vim/bundle/neobundle.vim
-    let isNeoBundleInstalled = 0
-endif
-
-
 function! s:meet_neocomplete_requirements()
     return has('lua') && ((v:version > 703) || ((v:version == 703) &&
                 \ has('patch885')))
@@ -152,16 +139,7 @@ NeoBundle 'moznion/hateblo.vim'
 " Haskell
 NeoBundle 'dag/vim2hs'
 
-
-
 filetype plugin indent on
-
-" First-time plugins installation.
-if isNeoBundleInstalled == 0
-    echo "Installing Bundles, please ignore key map error messages."
-    echo ""
-endif
-
 
 NeoBundleCheck
 " }}}
@@ -522,6 +500,7 @@ nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
