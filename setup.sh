@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly DOT_FILES=(zshrc vimrc vim tmux.conf zshenv vimperatorrc zprofile zlogout ipython zsh)
+readonly DOT_FILES=(zshrc vimrc vim tmux.conf zshenv vimperatorrc zprofile zlogout ipython zsh gvimrc)
 readonly DOT="."
 
 while getopts u OPT
