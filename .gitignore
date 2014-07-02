@@ -1,6 +1,6 @@
 _configtest.f
-/.vim/bundle
-/.vimrc.local
-/.vim/.netrwhist
+/vim/bundle
+/vimrc.local
+/vim/.netrwhist
 *.log
 *.sqlite
