@@ -535,7 +535,7 @@ command! -bar -bang -nargs=? -complete=file Scouter
     \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 
 " Change current directory
-command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang'>)
+command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang>')
 function! s:ChangeCurrentDir(directory, bang)
     if a:directory == ''
         lcd %:p:h

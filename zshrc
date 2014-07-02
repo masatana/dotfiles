@@ -70,6 +70,12 @@ bindkey -e
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+# zstyle
+autoload -Uz select-word-style
+select-word-style default
+zstyle ':zle:*' word-chars " _-./;@"
+zstyle ':zle:*' word-style unspecified
+
 
 # settings for each enviornments
 case "`uname`" in
@@ -101,6 +107,7 @@ case "`uname`" in
             start_agent;
         fi
         alias -s {png,jpg,bmp,PNG,JPG,BMP}=ristretto
+        alias -s {pdf}=evince
     ;;
 esac
 
