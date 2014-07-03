@@ -500,6 +500,13 @@ nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer
+if executable('pt')
+    let g:unite_source_grep_command = 'pt'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+    let g:unite_source_recursive_opt = ''
+    let g:unite_source_grep_encoding = 'utf-8'
+endif
 
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
@@ -507,6 +514,7 @@ au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <C-c><C-c> :<C-u>q<CR>
 au FileType unite inoremap <silent> <buffer> <C-c><C-c> <Esc>:<C-u>q<CR>
+
 
 " }}}
 

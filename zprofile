@@ -7,3 +7,7 @@ if [[ $TMUX_LS -regex-match "refused$" ]]; then
 else
     echo -e "\e[1;31m Tmux detected! \e[m"
 fi
+
+if [ -e "$HOME/Dropbox" -a `uname` = "Linux" ]; then
+    ifconfig > "$HOME/Dropbox/`date +%Y-%m-%d`@$HOST.txt"
+fi
