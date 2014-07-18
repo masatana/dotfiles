@@ -137,7 +137,7 @@ NeoBundle 'moznion/hateblo.vim'
 "NeoBundle 'python.vim'
 
 " Haskell
-NeoBundle 'dag/vim2hs'
+"NeoBundle 'dag/vim2hs'
 
 filetype plugin indent on
 
