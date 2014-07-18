@@ -17,6 +17,7 @@ path=(
     $HOME/.cabal/bin(N-/)
     $HOME/go/bin
     /usr/local/bin(N-/)
+    /usr/local/sbin(N-/)
     /usr/bin(N-/)
     /bin(N-/)
     /usr/sbin(N-/)

@@ -138,6 +138,8 @@ NeoBundle 'moznion/hateblo.vim'
 
 " Haskell
 "NeoBundle 'dag/vim2hs'
+NeoBundle 'kana/vim-filetype-haskell'
+NeoBundle 'eagletmt/ghcmod-vim'
 
 filetype plugin indent on
 
@@ -312,6 +314,8 @@ set laststatus=2
 
 " Indicates a fast terminal connection.
 set ttyfast
+
+set formatoptions=q
 
 " Put Vim in Paste mode
 "set paste
