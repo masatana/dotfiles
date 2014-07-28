@@ -95,6 +95,7 @@ case "`uname`" in
             /usr/bin/ssh-add
             /usr/bin/ssh-add $HOME/.ssh/bitbucket_id_rsa
             /usr/bin/ssh-add $HOME/.ssh/github_id_rsa
+            /usr/bin/ssh-add $HOME/.ssh/mach_id_rsa
         }
 
         # ssh settings
