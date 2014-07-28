@@ -32,7 +32,8 @@ setopt TRANSIENT_RPROMPT
 precmd () {
     RPROMPT='$(__git_ps1 "[%s]")'
 }
-PROMPT="[%n@%{$fg_bold[blue]%}${HOST}] %F{blue}%/% %f "
+PROMPT="[%n@%{$fg_bold[blue]%}${HOST}] %F{blue}%/% %f
+%# "
 PROMPT2="%_%% "
 
 # setopt settings
