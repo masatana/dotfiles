@@ -61,6 +61,7 @@ alias vimrc="vim ~/.vimrc"
 alias tree="tree -N"
 alias ls="ls -lh"
 alias ipy="ipython3 --pylab"
+alias tmux="TERM=screen-256color-bce tmux"
 
 # zle settings
 zle -N history-beginning-search-backward-end history-search-end

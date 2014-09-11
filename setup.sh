@@ -17,19 +17,35 @@ if [ $FLG_UNINSTALL ]; then
             rm -rf $HOME/$DOT$file
         fi
     done
+    exit 0
+fi
+
+# Detect OS && update && upgrade packages
+if [ `uname` = "Darwin" ]; then
+    if ! type "brew" > /dev/null 2>&1; then
+        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    fi
+    brew update
+    brew upgrade
+elif [ `uname` = "Linux" ]; then
+    echo "under construction"
 else
-    for file in ${DOT_FILES[@]}
-    do
-        ln -fvsn $HOME/dotfiles/$file $HOME/$DOT$file
-    done
-    # git setting (assume that git has been already installed)
-    if [ ! -e $HOME/.gitconfig ]; then
-        git config --global user.name "masatana"
-        git config --global user.email "plaza.tumbling+github@gmail.com"
-        git config --global color.ui auto
-    fi
-    if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
-        mkdir -p $HOME/.vim/bundle
-        git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
-    fi
+    echo "What are you using?"
+    exit 1
+fi
+
+
+for file in ${DOT_FILES[@]}
+do
+    ln -fvsn $HOME/dotfiles/$file $HOME/$DOT$file
+done
+# git setting (assume that git has been already installed)
+if [ ! -e $HOME/.gitconfig ]; then
+    git config --global user.name "masatana"
+    git config --global user.email "plaza.tumbling+github@gmail.com"
+    git config --global color.ui auto
+fi
+if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
+    mkdir -p $HOME/.vim/bundle
+    git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
 fi
