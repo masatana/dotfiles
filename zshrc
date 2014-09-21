@@ -118,3 +118,5 @@ function chpwd() { ls -Glh }
 
 # local settings (e.g. password)
 [[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
