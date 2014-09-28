@@ -1,24 +1,10 @@
 export OUTPUT_CHARSET=utf8
-case ${UID} in
-    0)
-        LANG=C
-    ;;
-esac
-
 source $HOME/.zsh/git-prompt.sh
 
 # autoload settings
 autoload -U compinit && compinit
 autoload -Uz colors
 autoload history-search-end
-
-# export settings
-# for go lang
-#if [ -x "`which go`" ]; then
-#    export GOROOT=`go env GOROOT`
-#    export GOPATH=$HOME/go
-#    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-#fi
 
 # const  settings
 HISTFILE=~/.zsh_history
@@ -48,6 +34,7 @@ setopt pushd_ignore_dups
 setopt hist_ignore_space
 setopt noflowcontrol
 setopt complete_aliases
+colors
 stty -ixon
 
 # alias settings
