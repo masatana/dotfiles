@@ -1,10 +1,6 @@
 " My .vimrc
 " vim: set foldmethod=marker:
-"   ^    ^    ^    ^    ^    ^    ^    ^
-"  /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
-" <___><___><___><___><___><___><___><___>
-"
-" Author: masatana <plaza.tumbling@gmail.com>
+" Author: masatana <plaza.tumbling+github@gmail.com>
 
 " ==============================================================================
 " Initialize{{{
@@ -226,100 +222,37 @@ else
                 \ source $MYGVIMRC
 endif
 
-" Enable smart indent.
-set autoindent smartindent
-
-" Enable folding.
-"set foldmethod=marker
-
-" Enable syntax.
-syntax enable
-
-" Show line numbers.
-set number
-
-" Exchange tab to space.
-set expandtab
-
-" Smart insert tab setting.
-set smarttab
-
-" Show title.
-set title
+syntax enable                           " Enable syntax.
+set ambiwidth=double                    " Tell Vim what to do with characters with multibite font.
+set autoindent smartindent              " Enable smart indent.
+set backspace=indent,eol,start          " Allow backspacing over sutoindent, line breaks, start of insert.
+set completeopt-=preview                " Do not show doc preview when using neocomplete.
+set display=lastline                    " Show the lastline as possible.
+set expandtab                           " Exchange tab to space.
+set formatoptions=q
+set history=1000                        " Sets how much history and undo vim remombers.
+set hlsearch                            " Highlight serach result.
+set ignorecase                          " Ignore the case of normal letters, when search.
+set incsearch                           " Enable incremental search.
+set laststatus=2                        " The last window always have a status line.
+set modeline                            " Enable modeline.
+set noswapfile                          " Do not use a swapfile for the buffer.
+set number                              " Show line numbers.
+set ruler                               " Show the line and column number of the cursor position.
+set showmatch                           " Highlight parenthesis.
+set smartcase                           " If the search pattern contains upper case characters, not to ignore.
+set smarttab                            " Smart insert tab setting.
+set splitbelow                          " When on, splitting a window will put the new window below the current one.
+set splitright                          " When on, splitting a window will put the new window right of the current one.
+set switchbuf=useopen                   " When `useopen`, jump to the first open window that contains the specified buffer.
+set synmaxcol=300                       " Dont't try to highlight lines longer than 300 characters.
+set title                               " Show title.
+set ttyfast                             " Indicates a fast terminal connection.
+set wildmenu wildmode=list:longest,full " Display candidate supplement.
 
 " Set number of spaces to use for each step of (auto)indent.
 " And round indent to multiple of 'shiftwidth'
 set shiftwidth=4 shiftround
-
-" Highlight parenthesis.
-set showmatch
-
-" Display candidate supplement.
-set wildmenu wildmode=list:longest,full
-
-" Ignore the case of normal letters, when search.
-set ignorecase
-
-" If the search pattern contains upper case characters, not to ignore.
-set smartcase
-
-" Enable incremental search.
-set incsearch
-
-" Highlight serach result.
-set hlsearch
-
-" Show the line and column number of the cursor position.
-set ruler
-
-" The cursor line will always be in the middle of the window.
-"set scrolloff=999
-
-" When on, splitting a window will put the new window below the current one.
-set splitbelow
-
-" When on, splitting a window will put the new window right of the current one.
-set splitright
-
-" Allow backspacing over sutoindent, line breaks, start of insert.
-set backspace=indent,eol,start
-
-" Do not use a swapfile for the buffer.
-set noswapfile
-
-" Show the lastline as possible.
-set display=lastline
-
-" When `useopen`, jump to the first open window that contains the specified
-" buffer.
-set switchbuf=useopen
-
-" Dont't try to highlight lines longer than 300 characters.
-set synmaxcol=300
-
-" Tell Vim what to do with characters with multibite font.
-set ambiwidth=double
-
-" Enable modeline.
-set modeline
-
-" Sets how much history and undo vim remombers.
-set history=1000
-
-" Do not show doc preview when using neocomplete.
-set completeopt-=preview
-
-" The last window always have a status line.
-set laststatus=2
-"set cmdheight=2
-
-" Indicates a fast terminal connection.
-set ttyfast
-
-set formatoptions=q
-
-" Put Vim in Paste mode
-"set paste
 
 " Set colorscheme
 autocmd ColorScheme * highlight Comment ctermfg=33 guifg=#009900
@@ -331,6 +264,11 @@ let g:rehash256 = 1
 set background=dark
 
 set t_Co=256
+set term=xterm-256color
+
+" Disable Background Color Erase (BCE) so that color sheme work
+" properly when Vim is used inside tmux and GNU screen
+set t_ut=
 
 set textwidth=0
 if exists('&colorcolumn')
