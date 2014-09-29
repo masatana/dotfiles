@@ -19,7 +19,7 @@ precmd () {
     RPROMPT='$(__git_ps1 "[%s]")'
 }
 PROMPT="%{$fg_bold[green]%}[%n@%m] %F{green}%/% %f
-%# %{${reset_color}%} "
+%# %{${reset_color}%}"
 PROMPT2="%_%% "
 
 # setopt settings
