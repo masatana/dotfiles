@@ -1,10 +1,6 @@
 " My .vimrc
 " vim: set foldmethod=marker:
-"   ^    ^    ^    ^    ^    ^    ^    ^
-"  /m\  /a\  /s\  /a\  /t\  /a\  /n\  /a\
-" <___><___><___><___><___><___><___><___>
-"
-" Author: masatana <plaza.tumbling@gmail.com>
+" Author: masatana <plaza.tumbling+github@gmail.com>
 
 " ==============================================================================
 " Initialize{{{
