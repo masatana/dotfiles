@@ -14,12 +14,10 @@ SSH_ENV=$HOME/.ssh/environment
 
 # prompt settings
 setopt PROMPT_SUBST
-setopt TRANSIENT_RPROMPT
 precmd () {
-    RPROMPT='$(__git_ps1 "[%s]")'
+    PROMPT="%{$fg_bold[green]%}[%n@%m] %F{green}%/% %f
+$(__git_ps1 '[%s]')%# %{${reset_color}%}"
 }
-PROMPT="%{$fg_bold[green]%}[%n@%m] %F{green}%/% %f
-%# %{${reset_color}%}"
 PROMPT2="%_%% "
 
 # setopt settings
