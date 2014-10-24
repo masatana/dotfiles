@@ -74,11 +74,12 @@ endfunction
 filetype plugin indent off
 if has("vim_starting" )
     set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#rc(expand("~/.vim/bundle/" ))
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    call neobundle#end()
 endif
 
 let g:neobundle_default_git_protocol='git'
-NeoBundleFetch 'Shougo/neobundle.vim'
 if s:meet_neocomplete_requirements()
     NeoBundle 'Shougo/neocomplete', {
         \ 'lazy':1,
@@ -125,10 +126,11 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-if isGoInstalled
-    NeoBundle 'fatih/vim-go'
-endif
+NeoBundle 'fatih/vim-go'
 NeoBundle 'moznion/hateblo.vim'
+NeoBundle 'google/vim-ft-go'
+NeoBundle 'vim-jp/vim-go-extra'
+set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 " Python
 "NeoBundle 'python.vim'
@@ -469,8 +471,9 @@ autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabsto
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
-autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown
+set path+=$GOPATH/src/**
+autocmd FileType go setlocal sw=4 noexpandtab ts=4 completeopt=menu,preview
 " }}}
 
 " Scouter
