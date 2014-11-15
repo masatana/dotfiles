@@ -95,7 +95,12 @@ let g:neobundle_default_git_protocol='git'
 "        \ }}
 "endif
 
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe', {
+    \ 'build' : {
+    \   'mac' : './install.sh --clang-completer',
+    \   'linux' : './install.sh --clang-completer',
+    \   },
+    \ }
 
 NeoBundle 'Align'
 NeoBundle 'tomasr/molokai'

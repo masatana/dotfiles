@@ -19,6 +19,10 @@ precmd () {
 $(__git_ps1 '[%s]')%# %{${reset_color}%}"
 }
 PROMPT2="%_%% "
+#PS1="%{$fg_bold[green]%}[%n@%m] %F{green}%/% %f
+#$(__git_ps1 '[%s]')%# %{${reset_color}%}"
+#PROMPT2=PS1
+
 
 # setopt settings
 setopt hist_ignore_dups

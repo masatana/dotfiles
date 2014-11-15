@@ -22,6 +22,7 @@ path=(
     /bin(N-/)
     /usr/sbin(N-/)
     /sbin(N-/)
+    /usr/local/Cellar/go/1.3.3/libexec/bin(N-/)
     $path
 )
 
