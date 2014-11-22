@@ -81,26 +81,26 @@ endif
 
 let g:neobundle_default_git_protocol='git'
 
-"if s:meet_neocomplete_requirements()
-"    NeoBundle 'Shougo/neocomplete', {
-"        \ 'lazy':1,
-"        \ 'autoload': {
-"        \       'insert': 1,
-"        \ }}
-"else
-"    NeoBundle 'Shougo/neocomplcache', {
-"        \ 'lazy': 1,
-"        \ 'autoload': {
-"        \       'insert': 1,
-"        \ }}
-"endif
+if s:meet_neocomplete_requirements()
+    NeoBundle 'Shougo/neocomplete', {
+        \ 'lazy':1,
+        \ 'autoload': {
+        \       'insert': 1,
+        \ }}
+else
+    NeoBundle 'Shougo/neocomplcache', {
+        \ 'lazy': 1,
+        \ 'autoload': {
+        \       'insert': 1,
+        \ }}
+endif
 
-NeoBundle 'Valloric/YouCompleteMe', {
-    \ 'build' : {
-    \   'mac' : './install.sh --clang-completer',
-    \   'linux' : './install.sh --clang-completer',
-    \   },
-    \ }
+" NeoBundle 'Valloric/YouCompleteMe', {
+"     \ 'build' : {
+"     \   'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+"     \   'linux' : './install.sh --clang-completer',
+"     \   },
+"     \ }
 
 NeoBundle 'Align'
 NeoBundle 'tomasr/molokai'
@@ -352,61 +352,61 @@ let g:quickrun_config['markdown'] = {
             \    'args': '--mathjax'
             \ }
 
-"if s:meet_neocomplete_requirements()
-"    " neocomplete{{{
-"    let g:neocomplete#enable_at_startup=1
-"    let g:neocomplete#enable_smart_case=1
-"    let g:neocomplete#sources#syntax#min_keyword_length=2
-"    let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
-"
-"    let g:neocomplete#sources#dictionary#dictionaries={
-"        \ 'default': '',
-"        \ }
-"    if !exists('g:neocomplete#keyword_patterns')
-"        let g:neocmplete#keyword_patterns={}
-"    endif
-"    let g:neocmplete#keyword_patterns['default'] = '\h\w*'
-"    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"    function! s:my_cr_function()
-"        return neocomplete#smart_close_popup() . "\<CR>"
-"    endfunction
-"    inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>"
-"    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"    if !exists('g:neocomplete#sources#omni#input_patterns')
-"        let g:neocomplete#sources#omni#input_patterns = {}
-"    endif"}}}
-"else
-"    " neocomplcache{{{
-"    set completeopt=menuone
-"    let g:neocomplcache_enable_at_startup=1
-"    let g:neocomplcache_enable_smart_case=1
-"    let g:neocomolcache_enable_camel_case_completion=1
-"    let g:neocomplcache_enable_underbar_completion=1
-"    let g:neocomplcache_min_syntax_length=3
-"    let g:neocomplcache_max_list=20
-"    let g:neocomplcache_min_syntax_length=3
-"
-"    if !exists('g:neocomplcache_keyword_patterns')
-"        let g:neocomplcache_keyword_patterns={}
-"    endif
-"    let g:neocomplcache_keyword_patterns['default']='\h\w*'
-"    map <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-"                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
-"    smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-"                \ ? "\<Plug>(neocomplcache_snippets_expand)"  : "\<C-o>D"
-"    inoremap <expr><TAB> pumvisible() ? "\<Down>"  : "\<TAB>"
-"    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-"    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-"    inoremap <expr><C-h>  neocomplcache#smart_close_popup() . "\<C-h>"
-"    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
-"    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"    function! s:my_cr_function()
-"        return neocomplcache#smart_close_popup() . "\<CR>"
-"    endfunction"}}}
-"endif
+if s:meet_neocomplete_requirements()
+    " neocomplete{{{
+    let g:neocomplete#enable_at_startup=1
+    let g:neocomplete#enable_smart_case=1
+    let g:neocomplete#sources#syntax#min_keyword_length=2
+    let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
+
+    let g:neocomplete#sources#dictionary#dictionaries={
+        \ 'default': '',
+        \ }
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocmplete#keyword_patterns={}
+    endif
+    let g:neocmplete#keyword_patterns['default'] = '\h\w*'
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        return neocomplete#smart_close_popup() . "\<CR>"
+    endfunction
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>"
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+    endif"}}}
+else
+    " neocomplcache{{{
+    set completeopt=menuone
+    let g:neocomplcache_enable_at_startup=1
+    let g:neocomplcache_enable_smart_case=1
+    let g:neocomolcache_enable_camel_case_completion=1
+    let g:neocomplcache_enable_underbar_completion=1
+    let g:neocomplcache_min_syntax_length=3
+    let g:neocomplcache_max_list=20
+    let g:neocomplcache_min_syntax_length=3
+
+    if !exists('g:neocomplcache_keyword_patterns')
+        let g:neocomplcache_keyword_patterns={}
+    endif
+    let g:neocomplcache_keyword_patterns['default']='\h\w*'
+    map <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
+                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+    smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
+                \ ? "\<Plug>(neocomplcache_snippets_expand)"  : "\<C-o>D"
+    inoremap <expr><TAB> pumvisible() ? "\<Down>"  : "\<TAB>"
+    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+    inoremap <expr><C-h>  neocomplcache#smart_close_popup() . "\<C-h>"
+    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        return neocomplcache#smart_close_popup() . "\<CR>"
+    endfunction"}}}
+endif
 
 "  Fugitive
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
