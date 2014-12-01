@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly DOT_FILES=(zshrc vimrc vim tmux.conf zshenv vimperatorrc zprofile zlogout ipython zsh gvimrc pentadactylrc)
+readonly DOT_FILES=(vimrc vim tmux.conf ipython gvimrc)
 readonly DOT="."
 
 while getopts u OPT
@@ -44,8 +44,12 @@ if [ ! -e $HOME/.gitconfig ]; then
     git config --global user.name "masatana"
     git config --global user.email "plaza.tumbling+github@gmail.com"
     git config --global color.ui auto
+    git config --gloabl core.editor vim
 fi
 if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
     mkdir -p $HOME/.vim/bundle
     git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+fi
+if [ ! -d $HOME/.oh-my-zsh ]; then
+    curl -L http://install.ohmyz.sh | sh
 fi
