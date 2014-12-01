@@ -25,14 +25,14 @@ c = get_config()
 
 # Run the file referenced by the PYTHONSTARTUP environment variable at IPython
 # startup.
-# c.InteractiveShellApp.exec_PYTHONSTARTUP = True
+c.InteractiveShellApp.exec_PYTHONSTARTUP = True
 
 # Should variables loaded at startup (by startup files, exec_lines, etc.) be
 # hidden from tools like %who?
 # c.InteractiveShellApp.hide_initial_ns = True
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
-# c.InteractiveShellApp.matplotlib = None
+c.InteractiveShellApp.matplotlib = None
 
 # If true, IPython will populate the user namespace with numpy, pylab, etc. and
 # an ``import *`` is done from numpy and pylab, when using pylab mode.
@@ -51,7 +51,7 @@ c = get_config()
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-# c.InteractiveShellApp.pylab = None
+c.InteractiveShellApp.pylab = None
 
 # List of files to run at IPython startup.
 # c.InteractiveShellApp.exec_files = []

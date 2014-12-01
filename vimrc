@@ -332,6 +332,9 @@ autocmd VimEnter * call AirlineInit()
 let g:indentLine_char="¦"
 let g:indentLine_color_term=239
 
+" vim-go
+let g:go_fmt_command = "goimports"
+
 " syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
