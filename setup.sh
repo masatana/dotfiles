@@ -44,7 +44,7 @@ if [ ! -e $HOME/.gitconfig ]; then
     git config --global user.name "masatana"
     git config --global user.email "plaza.tumbling+github@gmail.com"
     git config --global color.ui auto
-    git config --gloabl core.editor vim
+    git config --global core.editor vim
 fi
 if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
     mkdir -p $HOME/.vim/bundle
