@@ -8,7 +8,7 @@
 " UTF-8!!! (Other settings such as fileencoding is on the other place.
 scriptencoding utf-8
 
-" If installed vim is not tiny nor small, do not load the code below.
+" If installed vim is tiny or small, do not load the code below.
 if !1 | finish | endif
 
 " Check platform.
