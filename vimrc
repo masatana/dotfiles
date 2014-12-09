@@ -138,6 +138,7 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'moznion/hateblo.vim'
 NeoBundle 'google/vim-ft-go'
 NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'gorkunov/smartpairs.vim'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 " Python
@@ -463,6 +464,10 @@ if executable('pt')
     let g:unite_source_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
 endif
+
+" smartpairs.vim
+let g:smartpairs_key = 'v'
+let g:smartpairs_nextpairs_key = 'v'
 
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
