@@ -260,6 +260,7 @@ set synmaxcol=300                       " Dont't try to highlight lines longer t
 set title                               " Show title.
 set ttyfast                             " Indicates a fast terminal connection.
 set wildmenu wildmode=list:longest,full " Display candidate supplement.
+set cursorline
 
 " Set number of spaces to use for each step of (auto)indent.
 " And round indent to multiple of 'shiftwidth'
