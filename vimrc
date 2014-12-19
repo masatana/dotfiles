@@ -355,6 +355,12 @@ let g:quickrun_config['markdown'] = {
             \    'args': '--mathjax'
             \ }
 
+let g:quickrun_config['html'] = {
+            \    'command': 'open',
+            \    'exec': '%c %s',
+            \    'outputter': 'browser',
+            \ }
+
 if s:meet_neocomplete_requirements()
     " neocomplete{{{
     let g:neocomplete#enable_at_startup=1
@@ -485,6 +491,7 @@ autocmd FileType text setlocal textwidth=80
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown
 set path+=$GOPATH/src/**
 autocmd FileType go setlocal sw=4 noexpandtab ts=4 completeopt=menu,preview
+autocmd FileType tex setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 " }}}
 
 " Scouter
