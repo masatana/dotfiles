@@ -8,7 +8,7 @@
 " UTF-8!!! (Other settings such as fileencoding is on the other place.
 scriptencoding utf-8
 
-" If installed vim is not tiny nor small, do not load the code below.
+" If installed vim is tiny or small, do not load the code below.
 if !1 | finish | endif
 
 " Check platform.
@@ -138,6 +138,7 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'moznion/hateblo.vim'
 NeoBundle 'google/vim-ft-go'
 NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'gorkunov/smartpairs.vim'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 " Python
@@ -259,6 +260,7 @@ set synmaxcol=300                       " Dont't try to highlight lines longer t
 set title                               " Show title.
 set ttyfast                             " Indicates a fast terminal connection.
 set wildmenu wildmode=list:longest,full " Display candidate supplement.
+set cursorline
 
 " Set number of spaces to use for each step of (auto)indent.
 " And round indent to multiple of 'shiftwidth'
@@ -469,6 +471,10 @@ if executable('pt')
     let g:unite_source_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
 endif
+
+" smartpairs.vim
+let g:smartpairs_key = 'v'
+let g:smartpairs_nextpairs_key = 'v'
 
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
