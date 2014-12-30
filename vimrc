@@ -125,6 +125,7 @@ NeoBundle 'moznion/hateblo.vim'
 NeoBundle 'google/vim-ft-go'
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'gorkunov/smartpairs.vim'
+NeoBundle 'haya14busa/incsearch.vim'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 " Python
@@ -150,6 +151,18 @@ source $HOME/.vim/encode.vim
 " ==============================================================================
 " Remappings{{{
 " ==============================================================================
+
+" For haya14busa incsearch
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n <Plug>(incsearch-nohl-n)
+map N <Plug>(incsearch-nohl-N)
+map * <Plug>(incsearch-nohl-*)
+map # <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+let g:incsearch#auto_nohlsearch = 1
 
 " Invalidate forced termination.
 noremap ZZ <Nop>
