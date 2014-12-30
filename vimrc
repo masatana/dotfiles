@@ -65,11 +65,6 @@ endif
 " ==============================================================================
 " Neobundle{{{
 " ==============================================================================
-function! s:meet_neocomplete_requirements()
-    return has('lua') && ((v:version > 703) || ((v:version == 703) &&
-                \ has('patch885')))
-endfunction
-
 
 filetype plugin indent off
 if has("vim_starting" )
@@ -81,20 +76,11 @@ endif
 
 let g:neobundle_default_git_protocol='git'
 
-if s:meet_neocomplete_requirements()
-    NeoBundle 'Shougo/neocomplete', {
-        \ 'lazy':1,
-        \ 'autoload': {
-        \       'insert': 1,
-        \ }}
-else
-    NeoBundle 'Shougo/neocomplcache', {
-        \ 'lazy': 1,
-        \ 'autoload': {
-        \       'insert': 1,
-        \ }}
-endif
-
+NeoBundle 'Shougo/neocomplete', {
+    \ 'lazy':1,
+    \ 'autoload': {
+    \       'insert': 1,
+    \ }}
 " NeoBundle 'Valloric/YouCompleteMe', {
 "     \ 'build' : {
 "     \   'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
@@ -261,6 +247,7 @@ set title                               " Show title.
 set ttyfast                             " Indicates a fast terminal connection.
 set wildmenu wildmode=list:longest,full " Display candidate supplement.
 set cursorline
+set pumheight=10                        " Sets preview window up to 10
 
 " Set number of spaces to use for each step of (auto)indent.
 " And round indent to multiple of 'shiftwidth'
@@ -364,61 +351,31 @@ let g:quickrun_config['html'] = {
             \    'outputter': 'browser',
             \ }
 
-if s:meet_neocomplete_requirements()
-    " neocomplete{{{
-    let g:neocomplete#enable_at_startup=1
-    let g:neocomplete#enable_smart_case=1
-    let g:neocomplete#sources#syntax#min_keyword_length=2
-    let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
+" neocomplete{{{
+let g:neocomplete#enable_at_startup=1
+let g:neocomplete#enable_smart_case=1
+let g:neocomplete#sources#syntax#min_keyword_length=2
+let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
 
-    let g:neocomplete#sources#dictionary#dictionaries={
-        \ 'default': '',
-        \ }
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocmplete#keyword_patterns={}
-    endif
-    let g:neocmplete#keyword_patterns['default'] = '\h\w*'
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-        return neocomplete#smart_close_popup() . "\<CR>"
-    endfunction
-    inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>"
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif"}}}
-else
-    " neocomplcache{{{
-    set completeopt=menuone
-    let g:neocomplcache_enable_at_startup=1
-    let g:neocomplcache_enable_smart_case=1
-    let g:neocomolcache_enable_camel_case_completion=1
-    let g:neocomplcache_enable_underbar_completion=1
-    let g:neocomplcache_min_syntax_length=3
-    let g:neocomplcache_max_list=20
-    let g:neocomplcache_min_syntax_length=3
-
-    if !exists('g:neocomplcache_keyword_patterns')
-        let g:neocomplcache_keyword_patterns={}
-    endif
-    let g:neocomplcache_keyword_patterns['default']='\h\w*'
-    map <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \ ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
-    smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable()
-                \ ? "\<Plug>(neocomplcache_snippets_expand)"  : "\<C-o>D"
-    inoremap <expr><TAB> pumvisible() ? "\<Down>"  : "\<TAB>"
-    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-    inoremap <expr><C-h>  neocomplcache#smart_close_popup() . "\<C-h>"
-    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-        return neocomplcache#smart_close_popup() . "\<CR>"
-    endfunction"}}}
+let g:neocomplete#sources#dictionary#dictionaries={
+    \ 'default': '',
+    \ }
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocmplete#keyword_patterns={}
 endif
+let g:neocmplete#keyword_patterns['default'] = '\h\w*'
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return neocomplete#smart_close_popup() . "\<CR>"
+endfunction
+inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif"}}}
 
 "  Fugitive
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
@@ -439,6 +396,10 @@ map <Leader>mn :MemoNew<CR>
 map <Leader>ml :MemoList<CR>
 map <Leader>mg :MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
+let g:memolist_path = "~/Dropbox/memo"
+let g:memolist_unite = 1
+let g:memolist_unite_source = "file_rec"
+let g:memolist_unite_option = "-start-insert"
 
 " netrw.vim (Standard plugin
 let g:netrw_liststyle = 3
@@ -472,6 +433,9 @@ if executable('pt')
     let g:unite_source_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
 endif
+
+" Align.vim
+let g:Align_xstrlen = 3
 
 " smartpairs.vim
 let g:smartpairs_key = 'v'
