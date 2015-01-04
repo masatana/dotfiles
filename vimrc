@@ -322,9 +322,10 @@ let g:markdown_fenced_languages = [
 " Settings for each bundles{{{
 " ==============================================================================
 " airline
-let g:airline_theme='molokai'
+let g:airline_theme='badwolf'
 
 function! AirlineInit()
+    let g:airline_detect_iminsert=1
     let g:airline_section_a = airline#section#create(['mode'])
     let g:airline_section_c = airline#section#create(['%{getcwd()}', '/', 'file'])
 endfunction
