@@ -81,28 +81,15 @@ NeoBundle 'Shougo/neocomplete', {
     \ 'autoload': {
     \       'insert': 1,
     \ }}
-" NeoBundle 'Valloric/YouCompleteMe', {
-"     \ 'build' : {
-"     \   'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-"     \   'linux' : './install.sh --clang-completer',
-"     \   },
-"     \ }
 
 NeoBundle 'Align'
 NeoBundle 'tomasr/molokai'
-"NeoBundle 'taglist.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-surround'
-"NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/hahhah-vim'
 NeoBundle 'mattn/vim-airline-hahhah'
-NeoBundle 'mattn/flappyvird-vim'
 NeoBundle 'yanktmp.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -112,29 +99,15 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-"NeoBundle 'Shougo/vimshell.vim'
-"NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'glidenote/memolist.vim'
-NeoBundle 'mrtazz/simplenote.vim'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'fatih/vim-go'
-NeoBundle 'moznion/hateblo.vim'
 NeoBundle 'google/vim-ft-go'
 NeoBundle 'vim-jp/vim-go-extra'
-NeoBundle 'gorkunov/smartpairs.vim'
 NeoBundle 'haya14busa/incsearch.vim'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
-
-" Python
-"NeoBundle 'python.vim'
-
-" Haskell
-"NeoBundle 'dag/vim2hs'
-NeoBundle 'kana/vim-filetype-haskell'
-NeoBundle 'eagletmt/ghcmod-vim'
 
 filetype plugin indent on
 
@@ -322,7 +295,7 @@ let g:markdown_fenced_languages = [
 " Settings for each bundles{{{
 " ==============================================================================
 " airline
-let g:airline_theme='badwolf'
+let g:airline_theme='sol'
 
 function! AirlineInit()
     let g:airline_detect_iminsert=1
@@ -330,10 +303,6 @@ function! AirlineInit()
     let g:airline_section_c = airline#section#create(['%{getcwd()}', '/', 'file'])
 endfunction
 autocmd VimEnter * call AirlineInit()
-
-" indentLine
-let g:indentLine_char="¦"
-let g:indentLine_color_term=239
 
 " vim-go
 let g:go_fmt_command = "goimports"
@@ -397,9 +366,6 @@ nnoremap <Leader>gs :<C-u>Gstatus<CR>
 nnoremap <Leader>gw :<C-u>Gwrite<CR>
 nnoremap <Leader>ga :<C-u>Gadd<CR>
 
-" python.vim
-let python_highlight_all = 1
-
 " yanktmp.vim
 map <silent>sy :call YanktmpYank()<CR>
 map <silent>sp :call YanktmpPaste_p()<CR>
@@ -422,9 +388,6 @@ let g:netrw_alto = 1
 
 " vim2hs
 let g:haskell_conceal = 0
-" vim-indent-guides
-hi IndentGuidesOdd ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
 
 " clever-f.vim
 let g:clever_f_chars_match_any_signs = ";"
@@ -434,13 +397,6 @@ nnoremap [unite] <Nop>
 nmap <Leader>f [unite]
 
 let g:unite_enable_start_insert=1
-
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
-nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
-nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 if executable('pt')
     let g:unite_source_grep_command = 'pt'
     let g:unite_source_grep_default_opts = '--nogroup --nocolor'
@@ -448,13 +404,12 @@ if executable('pt')
     let g:unite_source_grep_encoding = 'utf-8'
 endif
 
-" Align.vim
-let g:Align_xstrlen = 3
-
-" smartpairs.vim
-let g:smartpairs_key = 'v'
-let g:smartpairs_nextpairs_key = 'v'
-
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
+nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
+nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
@@ -462,6 +417,8 @@ au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <C-c><C-c> :<C-u>q<CR>
 au FileType unite inoremap <silent> <buffer> <C-c><C-c> <Esc>:<C-u>q<CR>
 
+" Align.vim
+let g:Align_xstrlen = 3
 
 " }}}
 
@@ -473,38 +430,11 @@ autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabsto
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
-autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown ts=2 shiftwidth=2 softtabstop=2
 set path+=$GOPATH/src/**
 autocmd FileType go setlocal sw=4 noexpandtab ts=4 completeopt=menu,preview
 autocmd FileType tex setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 " }}}
-
-" Scouter
-function! Scouter(file, ...)
-    let pat = '^\s*$\|^\s*"'
-    let lines = readfile(a:file)
-    if !a:0 || !a:1
-        let lines = split(substitute(join(lines, "\n" ), '\n\s*\\', '', 'g'), "\n" )
-    endif
-    return len(filter(lines,'v:val !~ pat'))
-endfunction
-command! -bar -bang -nargs=? -complete=file Scouter
-    \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
-
-" Change current directory
-command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang>')
-function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
-
-    if a:bang == ''
-        pwd
-    endif
-endfunction
-nnoremap <silent><Leader>cd :<C-u>CD<CR>
 
 " If exsits local settings
 if filereadable(expand('~/.vimrc.local'))
