@@ -275,11 +275,6 @@ set novisualbell
 " not to be killed with X server.
 set clipboard+=unnamed,autoselect
 
-" Read .vimrc.local if exists.
-if filereadable(expand('~/.vimrc.local'))
-    source ~/.vimrc.local
-endif
-
 " Highlight code in markdown
 " http://mattn.kaoriya.net/software/vim/20140523124903.htm
 let g:markdown_fenced_languages = [
