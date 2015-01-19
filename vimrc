@@ -88,8 +88,6 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'mattn/hahhah-vim'
-NeoBundle 'mattn/vim-airline-hahhah'
 NeoBundle 'yanktmp.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
