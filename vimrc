@@ -412,6 +412,12 @@ au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <C-c><C-c> :<C-u>q<CR>
 au FileType unite inoremap <silent> <buffer> <C-c><C-c> <Esc>:<C-u>q<CR>
 
+call unite#custom#profile('default', 'context', {
+    \ 'prompt_direction': 'top',
+    \ 'prompt': '> ',
+    \ 'candidate_icon': '- ',
+    \ 'hide_icon': 0})
+
 " Align.vim
 let g:Align_xstrlen = 3
 
