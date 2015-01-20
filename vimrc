@@ -88,8 +88,6 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'mattn/hahhah-vim'
-NeoBundle 'mattn/vim-airline-hahhah'
 NeoBundle 'yanktmp.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -104,7 +102,6 @@ NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'fatih/vim-go'
-NeoBundle 'google/vim-ft-go'
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'haya14busa/incsearch.vim'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
@@ -303,6 +300,13 @@ autocmd VimEnter * call AirlineInit()
 let g:go_fmt_command = "goimports"
 
 " syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_popular_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_loc_list=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_go_checkers=['go', 'golint']
@@ -406,6 +410,12 @@ au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <C-c><C-c> :<C-u>q<CR>
 au FileType unite inoremap <silent> <buffer> <C-c><C-c> <Esc>:<C-u>q<CR>
+
+call unite#custom#profile('default', 'context', {
+    \ 'prompt_direction': 'top',
+    \ 'prompt': '> ',
+    \ 'candidate_icon': '- ',
+    \ 'hide_icon': 0})
 
 " Align.vim
 let g:Align_xstrlen = 3
