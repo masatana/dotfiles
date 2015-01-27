@@ -104,6 +104,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle 'dag/vim2hs'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 filetype plugin indent on
