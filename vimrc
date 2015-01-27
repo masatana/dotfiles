@@ -393,16 +393,11 @@ let g:haskell_conceal = 0
 let g:clever_f_chars_match_any_signs = ";"
 
 " unite.vim
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_source_file_mru_limit=200
 nnoremap [unite] <Nop>
 nmap <Leader>f [unite]
-
-let g:unite_enable_start_insert=1
-if executable('pt')
-    let g:unite_source_grep_command = 'pt'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-    let g:unite_source_recursive_opt = ''
-    let g:unite_source_grep_encoding = 'utf-8'
-endif
 
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
 nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
