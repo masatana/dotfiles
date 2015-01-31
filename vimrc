@@ -105,6 +105,8 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'dag/vim2hs'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'jason0x43/vim-js-indent'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 filetype plugin indent on
