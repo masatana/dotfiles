@@ -34,11 +34,12 @@ else
     exit 1
 fi
 
-
+# Set dotfiles
 for file in ${DOT_FILES[@]}
 do
     ln -fvsn $HOME/dotfiles/$file $HOME/$DOT$file
 done
+
 # git setting (assume that git has been already installed)
 if [ ! -e $HOME/.gitconfig ]; then
     git config --global user.name "masatana"
@@ -46,10 +47,13 @@ if [ ! -e $HOME/.gitconfig ]; then
     git config --global color.ui auto
     git config --global core.editor vim
 fi
+
+# I like neobundle.vim
 if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
     mkdir -p $HOME/.vim/bundle
     git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
 fi
+
 if [ ! -d $HOME/.oh-my-zsh ]; then
     curl -L http://install.ohmyz.sh | sh
 fi
