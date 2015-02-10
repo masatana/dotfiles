@@ -42,7 +42,7 @@ done
 # git setting (assume that git has been already installed)
 if [ ! -e $HOME/.gitconfig ]; then
     git config --global user.name "masatana"
-    git config --global user.email "plaza.tumbling+github@gmail.com"
+    git config --global user.email "plaza.tumbling@gmail.com"
     git config --global color.ui auto
     git config --global core.editor vim
 fi
