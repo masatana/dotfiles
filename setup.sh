@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly DOT_FILES=(vimrc vim tmux.conf ipython gvimrc)
+readonly DOT_FILES=(vimrc vim tmux.conf ipython gvimrc screenrc)
 readonly DOT="."
 
 while getopts u OPT
