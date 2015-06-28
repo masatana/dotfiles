@@ -76,6 +76,8 @@ endif
 
 let g:neobundle_default_git_protocol='git'
 
+call neobundle#begin(expand('~/.vim/bundle/'))
+
 NeoBundle 'Shougo/neocomplete', {
     \ 'lazy':1,
     \ 'autoload': {
@@ -108,6 +110,8 @@ NeoBundle 'dag/vim2hs'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'jason0x43/vim-js-indent'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
+
+call neobundle#end()
 
 filetype plugin indent on
 
