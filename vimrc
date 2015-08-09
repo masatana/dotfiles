@@ -9,28 +9,7 @@
 scriptencoding utf-8
 
 " If installed vim is tiny or small, do not load the code below.
-if !1 | finish | endif
-
-" Check platform.
-let s:iswin = has('win32') || has('win64')
-let s:iscygwin = has('win32unix')
-let s:ismac = has('mac') || has('macunix') || has('gui_mac') ||
-            \ has('gui_macvim') || (!executable('xdg-open') &&
-            \ system('uname') =~? '^darwin')
-let s:islinux = !s:iswin && !s:iscygwin && !s:ismac
-
-if s:iswin
-    language message en
-else
-    language message C
-endif
-language ctype C
-language time C
-
-if s:iswin
-    " Exchange path separator.
-    set shellslash
-endif
+if 0 | endif
 
 " Use <Leader> in global plugin.
 "let g:mapleader=','
@@ -69,14 +48,13 @@ endif
 filetype plugin indent off
 if has("vim_starting" )
     set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#begin(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
-    call neobundle#end()
 endif
 
 let g:neobundle_default_git_protocol='git'
 
 call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplete', {
     \ 'lazy':1,
@@ -198,16 +176,11 @@ cnoremap <C-d> <Delete>
 " ==============================================================================
 
 " Enable olor changing when reloading .vimrc.
-if !has('gui_running') && !s:iswin
-    " For Vim.
-    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-else
-    " For GVim.
-    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
-            \ if has ('gui_running') | source $MYGVIMRC
-    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') |
-                \ source $MYGVIMRC
-endif
+" For GVim.
+autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
+        \ if has ('gui_running') | source $MYGVIMRC
+autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') |
+            \ source $MYGVIMRC
 
 syntax enable                           " Enable syntax.
 set ambiwidth=double                    " Tell Vim what to do with characters with multibite font.
@@ -308,7 +281,7 @@ let g:go_fmt_command = "goimports"
 
 " syntastic
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_popular_loc_list=1
@@ -418,12 +391,6 @@ au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <C-c><C-c> :<C-u>q<CR>
 au FileType unite inoremap <silent> <buffer> <C-c><C-c> <Esc>:<C-u>q<CR>
-
-call unite#custom#profile('default', 'context', {
-    \ 'prompt_direction': 'top',
-    \ 'prompt': '> ',
-    \ 'candidate_icon': '- ',
-    \ 'hide_icon': 0})
 
 " Align.vim
 let g:Align_xstrlen = 3
