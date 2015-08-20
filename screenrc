@@ -1,5 +1,5 @@
 defencoding UTF-8
-# Escape
+# Escape. (there is an invisible character ^T)
 escape t
 altscreen on
 bind x remove

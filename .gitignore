@@ -4,3 +4,4 @@ _configtest.f
 /vim/.netrwhist
 *.log
 *.sqlite
+/ipython/profile_default/db/

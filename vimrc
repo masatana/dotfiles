@@ -1,6 +1,6 @@
 " My .vimrc
 " vim: set foldmethod=marker:
-" Author: masatana <plaza.tumbling+github@gmail.com>
+" Author: masatana <plaza.tumbling@gmail.com>
 
 " ==============================================================================
 " Initialize{{{
@@ -30,14 +30,6 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 
-" Set for go lang.
-if $GOPATH != ''
-    set rtp+=$GOROOT/misc/vim
-    set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    let isGoInstalled = 1 " True
-else
-    let isGoInstalled = 0 " False
-endif
 
 " }}}
 
@@ -67,7 +59,6 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'yanktmp.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -81,13 +72,7 @@ NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'dag/vim2hs'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'jason0x43/vim-js-indent'
-set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 call neobundle#end()
 
@@ -149,12 +134,6 @@ nnoremap j gj
 nnoremap k gk
 
 nnoremap P $p
-nnoremap <Leader>ev : <C-u>edit $MYVIMRC<CR>
-
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
 
 " http://vim-users.jp/2011/04/hack214/
 vnoremap ( t(
@@ -237,7 +216,6 @@ if exists('&colorcolumn')
     set colorcolumn=+1
 endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
-"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
@@ -340,34 +318,16 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif"}}}
 
-"  Fugitive
-nnoremap <Leader>gd :<C-u>Gdiff<CR>
-nnoremap <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <Leader>gw :<C-u>Gwrite<CR>
-nnoremap <Leader>ga :<C-u>Gadd<CR>
-
 " yanktmp.vim
 map <silent>sy :call YanktmpYank()<CR>
 map <silent>sp :call YanktmpPaste_p()<CR>
 map <silent>sP :call YanktmpPaste_P()<CR>
 
-" memolist.vim
-map <Leader>mn :MemoNew<CR>
-map <Leader>ml :MemoList<CR>
-map <Leader>mg :MemoGrep<CR>
-let g:memolist_memo_suffix = "md"
-let g:memolist_path = "~/Dropbox/memo"
-let g:memolist_unite = 1
-let g:memolist_unite_source = "file_rec"
-let g:memolist_unite_option = "-start-insert"
 
 " netrw.vim (Standard plugin
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
-
-" vim2hs
-let g:haskell_conceal = 0
 
 " clever-f.vim
 let g:clever_f_chars_match_any_signs = ";"
@@ -405,9 +365,7 @@ autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabsto
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
 autocmd FileType text setlocal textwidth=80
-autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown ts=2 shiftwidth=2 softtabstop=2
-set path+=$GOPATH/src/**
-autocmd FileType go setlocal sw=4 noexpandtab ts=4 completeopt=menu,preview
+autocmd BufNewFile,BufRead *.{md,mkd} setlocal filetype=markdown ts=2 shiftwidth=2 softtabstop=2
 autocmd FileType tex setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 " }}}
 
