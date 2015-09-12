@@ -217,7 +217,6 @@ if exists('&colorcolumn')
 endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 set list
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 set matchpairs& matchpairs+=<:>
 
 
