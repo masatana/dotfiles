@@ -42,8 +42,6 @@ if has("vim_starting" )
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-let g:neobundle_default_git_protocol='git'
-
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -60,17 +58,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'yanktmp.vim'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'rhysd/clever-f.vim'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'haya14busa/incsearch.vim'
 
@@ -187,7 +175,6 @@ set switchbuf=useopen                   " When `useopen`, jump to the first open
 set synmaxcol=300                       " Dont't try to highlight lines longer than 300 characters.
 set title                               " Show title.
 set ttyfast                             " Indicates a fast terminal connection.
-set wildmenu wildmode=list:longest,full " Display candidate supplement.
 set cursorline
 set pumheight=10                        " Sets preview window up to 10
 
@@ -216,7 +203,6 @@ if exists('&colorcolumn')
     set colorcolumn=+1
 endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
-set list
 set matchpairs& matchpairs+=<:>
 
 
@@ -243,9 +229,6 @@ let g:markdown_fenced_languages = [
 " ==============================================================================
 " Settings for each bundles{{{
 " ==============================================================================
-" airline
-let g:airline_theme='sol'
-
 function! AirlineInit()
     let g:airline_detect_iminsert=1
     let g:airline_section_a = airline#section#create(['mode'])
@@ -331,25 +314,6 @@ let g:netrw_alto = 1
 " clever-f.vim
 let g:clever_f_chars_match_any_signs = ";"
 
-" unite.vim
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable=1
-let g:unite_source_file_mru_limit=200
-nnoremap [unite] <Nop>
-nmap <Leader>f [unite]
-
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
-nnoremap <silent> [unite]b :<C-u>Unite buffer --bufer-name=buffer<CR>
-nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-au FileType unite nnoremap <buffer> <expr> <C-s> unite#do_action('split')
-au FileType unite inoremap <buffer> <expr> <C-s> unite#do_action('split')
-au FileType unite nnoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
-au FileType unite inoremap <buffer> <expr> <C-v> unite#do_action('vsplit')
-au FileType unite nnoremap <silent> <buffer> <C-c><C-c> :<C-u>q<CR>
-au FileType unite inoremap <silent> <buffer> <C-c><C-c> <Esc>:<C-u>q<CR>
 
 " Align.vim
 let g:Align_xstrlen = 3
