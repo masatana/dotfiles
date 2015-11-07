@@ -2,9 +2,8 @@
 " vim: set foldmethod=marker:
 " Author: masatana <plaza.tumbling@gmail.com>
 
-" ==============================================================================
 " Initialize{{{
-" ==============================================================================
+" 
 " UTF-8!!! (Other settings such as fileencoding is on the other place.
 scriptencoding utf-8
 
@@ -33,9 +32,8 @@ augroup END
 
 " }}}
 
-" ==============================================================================
 " Neobundle{{{
-" ==============================================================================
+" 
 
 filetype plugin indent off
 if has("vim_starting" )
@@ -44,6 +42,7 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
+let g:neobundle#types#git#default_protocol="git"
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplete', {
@@ -54,13 +53,10 @@ NeoBundle 'Shougo/neocomplete', {
 
 NeoBundle 'Align'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'yanktmp.vim'
 NeoBundle 'rhysd/clever-f.vim'
-NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle "fatih/vim-go"
 
 call neobundle#end()
 
@@ -69,16 +65,14 @@ filetype plugin indent on
 NeoBundleCheck
 " }}}
 
-" ==============================================================================
 " Encoding{{{
-" ==============================================================================
+" 
 set encoding=utf-8
 source $HOME/.vim/encode.vim
 " }}}
 
-" ==============================================================================
 " Remappings{{{
-" ==============================================================================
+" 
 
 " For haya14busa incsearch
 map / <Plug>(incsearch-forward)
@@ -138,9 +132,8 @@ cnoremap <C-h> <Backspace>
 cnoremap <C-d> <Delete>
 " }}}
 
-" ==============================================================================
 " General Settings{{{
-" ==============================================================================
+" 
 
 " Enable olor changing when reloading .vimrc.
 " For GVim.
@@ -173,6 +166,7 @@ set splitbelow                          " When on, splitting a window will put t
 set splitright                          " When on, splitting a window will put the new window right of the current one.
 set switchbuf=useopen                   " When `useopen`, jump to the first open window that contains the specified buffer.
 set synmaxcol=300                       " Dont't try to highlight lines longer than 300 characters.
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set title                               " Show title.
 set ttyfast                             " Indicates a fast terminal connection.
 set cursorline
@@ -226,24 +220,13 @@ let g:markdown_fenced_languages = [
 \]
 " }}}
 
-" ==============================================================================
 " Settings for each bundles{{{
-" ==============================================================================
-function! AirlineInit()
-    let g:airline_detect_iminsert=1
-    let g:airline_section_a = airline#section#create(['mode'])
-    let g:airline_section_c = airline#section#create(['%{getcwd()}', '/', 'file'])
-endfunction
-autocmd VimEnter * call AirlineInit()
-
+" 
 " vim-go
 let g:go_fmt_command = "goimports"
 
-" syntastic
-set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
+" syntastic
 let g:syntastic_always_popular_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=1
@@ -251,28 +234,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_go_checkers=['go', 'golint']
 let g:syntastic_quiet_messages = { "level": "warnings"}
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-
-" quickrun
-let g:quickrun_config = {
-            \     "_" : {
-            \         "outputter/buffer/split" : ":botright" ,
-            \         "outputter/buffer/close_on_empty" : 1,
-            \         "runner" : "vimproc" ,
-            \         "runner/vimproc/updatetime" : 60
-            \     },
-            \ }
-
-let g:quickrun_config['markdown'] = {
-            \    'outputter': 'browser',
-            \    'args': '--mathjax'
-            \ }
-
-let g:quickrun_config['html'] = {
-            \    'command': 'open',
-            \    'exec': '%c %s',
-            \    'outputter': 'browser',
-            \ }
+let g:syntastic_python_python_exec = '/home/masatana/local/bin/python3'
 
 " neocomplete{{{
 let g:neocomplete#enable_at_startup=1
@@ -305,12 +267,6 @@ map <silent>sy :call YanktmpYank()<CR>
 map <silent>sp :call YanktmpPaste_p()<CR>
 map <silent>sP :call YanktmpPaste_P()<CR>
 
-
-" netrw.vim (Standard plugin
-let g:netrw_liststyle = 3
-let g:netrw_altv = 1
-let g:netrw_alto = 1
-
 " clever-f.vim
 let g:clever_f_chars_match_any_signs = ";"
 
@@ -320,9 +276,8 @@ let g:Align_xstrlen = 3
 
 " }}}
 
-" ==============================================================================
 " Settings for each filetypes{{{
-" ==============================================================================
+" 
 autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
