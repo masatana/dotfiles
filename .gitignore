@@ -1,5 +1,7 @@
 _configtest.f
 /vim/bundle
+/vim/plugged
+/vim/autoload
 /vimrc.local
 /vim/.netrwhist
 *.log
