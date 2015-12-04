@@ -44,7 +44,6 @@ Plug 'tomasr/molokai'
 Plug 'scrooloose/syntastic'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -199,7 +198,6 @@ set clipboard+=unnamed,autoselect
 let g:markdown_fenced_languages = [
 \       'python',
 \       'json=javascript',
-\       'go',
 \       'css',
 \       'sh',
 \]
@@ -207,9 +205,6 @@ let g:markdown_fenced_languages = [
 
 " Settings for each bundles{{{
 " 
-" vim-go
-let g:go_fmt_command = "goimports"
-
 
 " syntastic
 let g:syntastic_always_popular_loc_list=1
@@ -217,7 +212,6 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_go_checkers=['go', 'golint']
 let g:syntastic_quiet_messages = { "level": "warnings"}
 let g:syntastic_python_python_exec = '/home/masatana/local/bin/python3'
 
