@@ -1,4 +1,4 @@
-# My dotfiles
+# My dotfiles (no dependency version)
 
 ## How to Setup
 
@@ -10,6 +10,9 @@ $ chmod 700 setup.sh
 $ ./setup.sh
 $ vim ~/.vimrc
 ```
+
+or, just copy and paste ;)
+
 ## How to Uninstall
 
 ```sh
@@ -24,6 +27,3 @@ $ cp ./terminalrc ~/.config/xfce4/terminal/terminalrc
 ## Note
 If you want to write sensitive information, please write it in .vimrc.local
 
-## Future work
-1. Check existed dotfiles.
-2. Auto install nesessary softwares.

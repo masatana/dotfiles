@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 readonly DOT_FILES=(vimrc vim tmux.conf ipython gvimrc screenrc)
 readonly DOT="."
