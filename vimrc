@@ -24,12 +24,6 @@ if !exists("$MYGVIMRC" )
     let $MYGVIMRC = expand('~/.gvimrc')
 endif
 
-" Set augroup.
-augroup MyAutoCmd
-    autocmd!
-augroup END
-
-
 " }}}
 
 " Neobundle{{{
@@ -121,10 +115,6 @@ cnoremap <C-d> <Delete>
 
 " Enable olor changing when reloading .vimrc.
 " For GVim.
-autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
-        \ if has ('gui_running') | source $MYGVIMRC
-autocmd MyAutoCmd BufWritePost $MYGVIMRC if has ('gui_running') |
-            \ source $MYGVIMRC
 
 syntax enable                           " Enable syntax.
 set ambiwidth=double                    " Tell Vim what to do with characters with multibite font.
