@@ -1,0 +1,13 @@
+diff --git a/ambari-metrics/ambari-metrics-timelineservice/conf/unix/ambari-metrics-collector b/ambari-metrics/ambari-metrics-timelineservice/conf/unix/ambari-metrics-collector
+index bf2fc47..f83af50 100644
+--- a/ambari-metrics/ambari-metrics-timelineservice/conf/unix/ambari-metrics-collector
++++ b/ambari-metrics/ambari-metrics-timelineservice/conf/unix/ambari-metrics-collector
+@@ -261,7 +261,7 @@ function start()
+     rm -f "${PIDFILE}" >/dev/null 2>&1
+   fi
+ 
+-  nohup "${JAVA}" "-Xms$AMS_COLLECTOR_HEAPSIZE" "-Xmx$AMS_COLLECTOR_HEAPSIZE" "${AMS_COLLECTOR_OPTS}" "-cp" "/usr/lib/ambari-metrics-collector/*:${COLLECTOR_CONF_DIR}" "-Djava.net.preferIPv4Stack=true" "-Dams.log.dir=${AMS_COLLECTOR_LOG_DIR}" "-Dproc_${DAEMON_NAME}" "${CLASS}" "$@" > $OUTFILE 2>&1 &
++  nohup "${JAVA}" "-Xms$AMS_COLLECTOR_HEAPSIZE" "-Xmx$AMS_COLLECTOR_HEAPSIZE" ${AMS_COLLECTOR_OPTS} "-cp" "/usr/lib/ambari-metrics-collector/*:${COLLECTOR_CONF_DIR}" "-Djava.net.preferIPv4Stack=true" "-Dams.log.dir=${AMS_COLLECTOR_LOG_DIR}" "-Dproc_${DAEMON_NAME}" "${CLASS}" "$@" > $OUTFILE 2>&1 &
+   PID=$!
+   write_pidfile "${PIDFILE}"
+   sleep 2
