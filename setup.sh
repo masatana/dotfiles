@@ -1,7 +1,9 @@
-#!/bin/bash -eu
+#!/usr/bin/zsh
 
-readonly DOT_FILES=(vimrc vim tmux.conf ipython gvimrc screenrc)
-readonly DOT="."
+local DOT_FILES
+local DOT
+DOT_FILES=(vimrc vim tmux.conf screenrc)
+DOT="."
 
 while getopts u OPT
 do
@@ -34,12 +36,3 @@ if [ ! -e $HOME/.gitconfig ]; then
     git config --global core.editor vim
 fi
 
-# I like neobundle.vim
-if [ ! -e $HOME/.vim/bundle/neobundle.vim/README.md ]; then
-    wget https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh
-    sh ./install.sh
-fi
-
-if [ ! -d $HOME/.oh-my-zsh ] && type curl; then
-    curl -L http://install.ohmyz.sh | sh
-fi
