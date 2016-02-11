@@ -1,9 +1,0 @@
-"3.8.2 (created: 2014/02/13 23:52:43)
-
-noremap j 3j
-noremap k 3k
-inoremap <C-c> <ESC>
-source! /home/masatana/.vimperatorrc.local
-"set hintmatching=custom
-
-" vim: set ft=vimperator:
