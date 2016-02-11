@@ -11,6 +11,8 @@ $ ./setup.sh
 $ vim ~/.vimrc
 ```
 
+And read [this](https://github.com/junegunn/vim-plug)
+
 or, just copy and paste ;)
 
 ## How to Uninstall
@@ -21,8 +23,6 @@ $ ./setup.sh -u
 
 ## Xubuntu setting
 
-```bash
-$ cp ./terminalrc ~/.config/xfce4/terminal/terminalrc
 
 ## Note
 If you want to write sensitive information, please write it in .vimrc.local
