@@ -26,12 +26,10 @@ endif
 
 " }}}
 
-" Neobundle{{{
+" Plug{{{
 " 
 
 call plug#begin('~/.vim/plugged')
-
-Plug 'Shougo/neocomplete'
 
 Plug 'Align'
 Plug 'tomasr/molokai'
@@ -120,7 +118,6 @@ syntax enable                           " Enable syntax.
 set ambiwidth=double                    " Tell Vim what to do with characters with multibite font.
 set autoindent smartindent              " Enable smart indent.
 set backspace=indent,eol,start          " Allow backspacing over sutoindent, line breaks, start of insert.
-set completeopt-=preview                " Do not show doc preview when using neocomplete.
 set display=lastline                    " Show the lastline as possible.
 set expandtab                           " Exchange tab to space.
 set formatoptions=q
@@ -204,32 +201,6 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_quiet_messages = { "level": "warnings"}
 let g:syntastic_python_python_exec = '/home/masatana/local/bin/python3'
-
-" neocomplete{{{
-let g:neocomplete#enable_at_startup=1
-let g:neocomplete#enable_smart_case=1
-let g:neocomplete#sources#syntax#min_keyword_length=2
-let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
-
-let g:neocomplete#sources#dictionary#dictionaries={
-    \ 'default': '',
-    \ }
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocmplete#keyword_patterns={}
-endif
-let g:neocmplete#keyword_patterns['default'] = '\h\w*'
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return neocomplete#smart_close_popup() . "\<CR>"
-endfunction
-inoremap <expr><TAB> pumvisible() ? "\<C-n>"  : "\<TAB>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif"}}}
 
 " yanktmp.vim
 map <silent>sy :call YanktmpYank()<CR>
