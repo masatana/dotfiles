@@ -32,10 +32,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'Align'
-Plug 'tomasr/molokai'
 Plug 'scrooloose/syntastic'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
+Plug 'derekwyatt/vim-scala'
 
 call plug#end()
 
@@ -61,6 +61,12 @@ map # <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 let g:incsearch#auto_nohlsearch = 1
+
+map <C-g> :Gtags 
+"map <C-h> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
 
 " Invalidate forced termination.
 noremap ZZ <Nop>
@@ -106,6 +112,12 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-h> <Backspace>
 cnoremap <C-d> <Delete>
+
+map <C-g> :Gtags
+map <C-h> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
 " }}}
 
 " General Settings{{{
@@ -128,7 +140,7 @@ set incsearch                           " Enable incremental search.
 set laststatus=2                        " The last window always have a status line.
 set modeline                            " Enable modeline.
 set noswapfile                          " Do not use a swapfile for the buffer.
-set number                              " Show line numbers.
+"set number                              " Show line numbers.
 set ruler                               " Show the line and column number of the cursor position.
 set showmatch                           " Highlight parenthesis.
 set smartcase                           " If the search pattern contains upper case characters, not to ignore.
@@ -151,10 +163,7 @@ set shiftwidth=4 shiftround
 autocmd ColorScheme * highlight Comment ctermfg=33 guifg=#009900
 autocmd ColorScheme * highlight String ctermfg=33 guifg=#009900
 autocmd ColorScheme * highlight Charcter ctermfg=22 guifg=#009900
-colorscheme molokai
-let g:molokai_original = 1
-let g:rehash256 = 1
-set background=dark
+colorscheme delek
 
 set t_Co=256
 set term=xterm-256color
@@ -188,6 +197,10 @@ let g:markdown_fenced_languages = [
 \       'css',
 \       'sh',
 \]
+
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
+let g:netrw_alto = 1
 " }}}
 
 " Settings for each bundles{{{
@@ -199,8 +212,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_quiet_messages = { "level": "warnings"}
-let g:syntastic_python_python_exec = '/home/masatana/local/bin/python3'
+" let g:syntastic_quiet_messages = { "level": "warnings"}
+let g:syntastic_sh_checkers = ['shellcheck']
 
 " yanktmp.vim
 map <silent>sy :call YanktmpYank()<CR>
