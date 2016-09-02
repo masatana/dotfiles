@@ -1,5 +1,4 @@
 " My .vimrc
-" vim: set foldmethod=marker:
 " Author: masatana <plaza.tumbling@gmail.com>
 
 " Initialize{{{
@@ -36,6 +35,7 @@ Plug 'scrooloose/syntastic'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'derekwyatt/vim-scala'
+Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -74,20 +74,14 @@ noremap ZQ <Nop>
 command! -nargs=0 Q :q!
 command! -nargs=0 QQ :qa!
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
 inoremap <C-c> <Esc>
 
 noremap <BS> <C-h>
 noremap! <BS> <C-h>
 
 nmap <silent> <C-c> :nohlsearch<CR>
+
+imap <C-CR> \\<CR>
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -160,9 +154,7 @@ set pumheight=10                        " Sets preview window up to 10
 set shiftwidth=4 shiftround
 
 " Set colorscheme
-autocmd ColorScheme * highlight Comment ctermfg=33 guifg=#009900
-autocmd ColorScheme * highlight String ctermfg=33 guifg=#009900
-autocmd ColorScheme * highlight Charcter ctermfg=22 guifg=#009900
+set background=dark
 colorscheme delek
 
 set t_Co=256
@@ -172,10 +164,6 @@ set term=xterm-256color
 " properly when Vim is used inside tmux and GNU screen
 set t_ut=
 
-set textwidth=0
-if exists('&colorcolumn')
-    set colorcolumn=+1
-endif
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 set matchpairs& matchpairs+=<:>
 
@@ -235,7 +223,6 @@ autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
 autocmd FileType python setlocal nosmartindent
-autocmd FileType text setlocal textwidth=80
 autocmd BufNewFile,BufRead *.{md,mkd} setlocal filetype=markdown ts=2 shiftwidth=2 softtabstop=2
 autocmd FileType tex setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
 " }}}
