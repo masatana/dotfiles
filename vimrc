@@ -32,10 +32,13 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Align'
 Plug 'scrooloose/syntastic'
+"Plug 'naomake/neomake'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go'
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -194,6 +197,9 @@ let g:netrw_alto = 1
 " Settings for each bundles{{{
 " 
 
+" vim-go
+let g:go_fmt_command = "goimports"
+
 " syntastic
 let g:syntastic_always_popular_loc_list=1
 let g:syntastic_check_on_open=1
@@ -202,6 +208,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 " let g:syntastic_quiet_messages = { "level": "warnings"}
 let g:syntastic_sh_checkers = ['shellcheck']
+
 
 " yanktmp.vim
 map <silent>sy :call YanktmpYank()<CR>
@@ -214,6 +221,15 @@ let g:clever_f_chars_match_any_signs = ";"
 
 " Align.vim
 let g:Align_xstrlen = 3
+
+" ctrlp.vim
+
+let g:ctrlp_show_hidden=1
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|png|pyc)$',
+  \ 'link': '',
+  \ }
 
 " }}}
 
