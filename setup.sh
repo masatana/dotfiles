@@ -2,7 +2,7 @@
 
 local DOT_FILES
 local DOT
-DOT_FILES=(vimrc vim tmux.conf screenrc)
+DOT_FILES=(vimrc vim tmux.conf screenrc agignore)
 DOT="."
 
 while getopts u OPT
