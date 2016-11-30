@@ -33,6 +33,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Align'
 Plug 'scrooloose/syntastic'
 "Plug 'naomake/neomake'
+Plug 'mileszs/ack.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'derekwyatt/vim-scala'
@@ -218,6 +219,12 @@ map <silent>sP :call YanktmpPaste_P()<CR>
 " clever-f.vim
 let g:clever_f_chars_match_any_signs = ";"
 
+" Ack.vim
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 " Align.vim
 let g:Align_xstrlen = 3
