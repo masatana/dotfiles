@@ -73,8 +73,8 @@ map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
 " Invalidate forced termination.
-noremap ZZ <Nop>
-noremap ZQ <Nop>
+"noremap ZZ <Nop>
+"noremap ZQ <Nop>
 command! -nargs=0 Q :q!
 command! -nargs=0 QQ :qa!
 
