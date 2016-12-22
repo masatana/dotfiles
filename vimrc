@@ -73,8 +73,8 @@ map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
 " Invalidate forced termination.
-noremap ZZ <Nop>
-noremap ZQ <Nop>
+"noremap ZZ <Nop>
+"noremap ZQ <Nop>
 command! -nargs=0 Q :q!
 command! -nargs=0 QQ :qa!
 
@@ -237,6 +237,11 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|png|pyc)$',
   \ 'link': '',
   \ }
+
+if executable('ag')
+  let g:ctrlp_use_caching=0
+  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+endif
 
 " }}}
 
