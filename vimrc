@@ -31,8 +31,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'Align'
-Plug 'scrooloose/syntastic'
-"Plug 'naomake/neomake'
+" Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 Plug 'mileszs/ack.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
@@ -73,8 +73,8 @@ map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
 " Invalidate forced termination.
-noremap ZZ <Nop>
-noremap ZQ <Nop>
+"noremap ZZ <Nop>
+"noremap ZQ <Nop>
 command! -nargs=0 Q :q!
 command! -nargs=0 QQ :qa!
 
@@ -210,6 +210,26 @@ let g:syntastic_auto_loc_list=2
 " let g:syntastic_quiet_messages = { "level": "warnings"}
 let g:syntastic_python_python_exec = "$HOME/anaconda3/bin/python"
 let g:syntastic_sh_checkers = ['shellcheck']
+
+" neomake
+autocmd! BufWritePost * Neomake
+let g:neomake_python_python_maker = {
+   \ 'exe': 'python',
+   \ }
+
+let g:neomake_sh_shellcheck_maker = {
+   \ 'args': ['-fgcc'],
+   \ 'errorformat':
+        \ '%f:%l:%c: %trror: %m,' .
+        \ '%f:%l:%c: %tarning: %m,' .
+        \ '%I%f:%l:%c: note: %m',
+   \ }
+
+let g:neomake_java_javac_executable =
+            \ get(g:, 'neomake_java_javac_executable', 'javac')
+
+let g:neomake_java_maven_executable =
+            \ get(g:, 'neomake_java_maven_executable', 'mvn')
 
 
 " yanktmp.vim
