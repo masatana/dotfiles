@@ -203,11 +203,12 @@ let g:go_fmt_command = "goimports"
 
 " syntastic
 let g:syntastic_always_popular_loc_list=1
-let g:syntastic_check_on_open=1
+" let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 " let g:syntastic_quiet_messages = { "level": "warnings"}
+let g:syntastic_python_python_exec = "$HOME/anaconda3/bin/python"
 let g:syntastic_sh_checkers = ['shellcheck']
 
 " neomake
