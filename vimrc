@@ -212,6 +212,8 @@ let g:syntastic_sh_checkers = ['shellcheck']
 
 " neomake
 autocmd! BufWritePost * Neomake
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_flake8_maker = { 'args': ['--ignore=E111,E114,E302,E501'], }
 let g:neomake_python_python_maker = {
    \ 'exe': 'python',
    \ }
