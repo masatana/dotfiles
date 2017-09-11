@@ -30,7 +30,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Align'
+Plug 'vim-scripts/Align'
 " Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
 Plug 'mileszs/ack.vim'
