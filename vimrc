@@ -30,16 +30,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-scripts/Align'
-" Plug 'scrooloose/syntastic'
-Plug 'neomake/neomake'
-Plug 'mileszs/ack.vim'
-Plug 'rhysd/clever-f.vim'
-Plug 'haya14busa/incsearch.vim'
-Plug 'derekwyatt/vim-scala'
+"Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'fatih/vim-go'
-Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -48,74 +41,60 @@ call plug#end()
 " Encoding{{{
 " 
 set encoding=utf-8
-source $HOME/.vim/encode.vim
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
 " }}}
 
 " Remappings{{{
 " 
 
-" For haya14busa incsearch
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n <Plug>(incsearch-nohl-n)
-map N <Plug>(incsearch-nohl-N)
-map * <Plug>(incsearch-nohl-*)
-map # <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-let g:incsearch#auto_nohlsearch = 1
-
-map <C-g> :Gtags 
-"map <C-h> :Gtags -f %<CR>
-map <C-j> :GtagsCursor<CR>
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
+"map <C-n> :cn<CR>
+"map <C-p> :cp<CR>
 
 " Invalidate forced termination.
 "noremap ZZ <Nop>
 "noremap ZQ <Nop>
-command! -nargs=0 Q :q!
-command! -nargs=0 QQ :qa!
+"command! -nargs=0 Q :q!
+"command! -nargs=0 QQ :qa!
 
-inoremap <C-c> <Esc>
+"inoremap <C-c> <Esc>
 
-noremap <BS> <C-h>
-noremap! <BS> <C-h>
+"noremap <BS> <C-h>
+"noremap! <BS> <C-h>
 
-nmap <silent> <C-c> :nohlsearch<CR>
+"nmap <silent> <C-c> :nohlsearch<CR>
 
-imap <C-CR> \\<CR>
+"imap <C-CR> \\<CR>
 
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
+"nnoremap n nzz
+"nnoremap N Nzz
+"nnoremap * *zz
+"nnoremap # #zz
 
-nnoremap j gj
-nnoremap k gk
-
-nnoremap P $p
-
+"nnoremap j gj
+"nnoremap k gk
+"
+"nnoremap P $p
+"
 " http://vim-users.jp/2011/04/hack214/
-vnoremap ( t(
-vnoremap ) t)
-onoremap ( t(
-onoremap ) t)
-
-" Emacs-like keybind in command-line mode
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-h> <Backspace>
-cnoremap <C-d> <Delete>
-
-map <C-g> :Gtags
-map <C-h> :Gtags -f %<CR>
-map <C-j> :GtagsCursor<CR>
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
+"vnoremap ( t(
+"vnoremap ) t)
+"onoremap ( t(
+"onoremap ) t)
+"
+"" Emacs-like keybind in command-line mode
+"cnoremap <C-f> <Right>
+"cnoremap <C-b> <Left>
+"cnoremap <C-a> <Home>
+"cnoremap <C-e> <End>
+"cnoremap <C-h> <Backspace>
+"cnoremap <C-d> <Delete>
+"
+"map <C-g> :Gtags
+"map <C-h> :Gtags -f %<CR>
+"map <C-j> :GtagsCursor<CR>
+"map <C-n> :cn<CR>
+"map <C-p> :cp<CR>
 " }}}
 
 " General Settings{{{
@@ -129,7 +108,9 @@ set ambiwidth=double                    " Tell Vim what to do with characters wi
 set autoindent smartindent              " Enable smart indent.
 set backspace=indent,eol,start          " Allow backspacing over sutoindent, line breaks, start of insert.
 set display=lastline                    " Show the lastline as possible.
-set expandtab                           " Exchange tab to space.
+" set expandtab                           " Exchange tab to space.
+"set list
+"set listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
 set formatoptions=q
 set history=1000                        " Sets how much history and undo vim remombers.
 set hlsearch                            " Highlight serach result.
@@ -147,7 +128,7 @@ set splitbelow                          " When on, splitting a window will put t
 set splitright                          " When on, splitting a window will put the new window right of the current one.
 set switchbuf=useopen                   " When `useopen`, jump to the first open window that contains the specified buffer.
 set synmaxcol=300                       " Dont't try to highlight lines longer than 300 characters.
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set statusline=%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set title                               " Show title.
 set ttyfast                             " Indicates a fast terminal connection.
 set cursorline
@@ -159,7 +140,7 @@ set shiftwidth=4 shiftround
 
 " Set colorscheme
 set background=dark
-colorscheme delek
+colorscheme elflord
 
 set t_Co=256
 set term=xterm-256color
@@ -171,9 +152,11 @@ set t_ut=
 autocmd BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
 set matchpairs& matchpairs+=<:>
 
+" set for universal-ctags. Go back to parent directory if no tags file
+set tags=masatana.tags;
 
 " Disable bell.
-set t_vb=
+set belloff=all
 set novisualbell
 
 " When running on terminal, use |clipboard-exclude|
@@ -199,83 +182,34 @@ let g:netrw_alto = 1
 " 
 
 " vim-go
-let g:go_fmt_command = "goimports"
-
-" syntastic
-let g:syntastic_always_popular_loc_list=1
-" let g:syntastic_check_on_open=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-" let g:syntastic_quiet_messages = { "level": "warnings"}
-let g:syntastic_python_python_exec = "$HOME/anaconda3/bin/python"
-let g:syntastic_sh_checkers = ['shellcheck']
-
-" neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_python_flake8_maker = { 'args': ['--ignore=E111,E114,E302,E501'], }
-let g:neomake_python_python_maker = {
-   \ 'exe': 'python',
-   \ }
-
-let g:neomake_sh_shellcheck_maker = {
-   \ 'args': ['-fgcc'],
-   \ 'errorformat':
-        \ '%f:%l:%c: %trror: %m,' .
-        \ '%f:%l:%c: %tarning: %m,' .
-        \ '%I%f:%l:%c: note: %m',
-   \ }
-
-let g:neomake_java_javac_executable =
-            \ get(g:, 'neomake_java_javac_executable', 'javac')
-
-let g:neomake_java_maven_executable =
-            \ get(g:, 'neomake_java_maven_executable', 'mvn')
-
-
-" yanktmp.vim
-map <silent>sy :call YanktmpYank()<CR>
-map <silent>sp :call YanktmpPaste_p()<CR>
-map <silent>sP :call YanktmpPaste_P()<CR>
+"let g:go_fmt_command = 'goimports'
+"
+"let g:neomake_go_errcheck_maker = {
+"\ 'args': ['-abspath', s:goargs],
+"\ 'append_file': 0,
+"\ 'errorformat': '%f:%l:%c:\ %m, %f:%l:%c\ %#%m'
+"\ }
+"let g:neomake_go_enabled_makers = ['golint', 'govet', 'errcheck']
 
 " clever-f.vim
-let g:clever_f_chars_match_any_signs = ";"
-
-" Ack.vim
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-
-" Align.vim
-let g:Align_xstrlen = 3
-
-" ctrlp.vim
-
-let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|png|pyc)$',
-  \ 'link': '',
-  \ }
-
-if executable('ag')
-  let g:ctrlp_use_caching=0
-  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
-endif
 
 " }}}
 
 " Settings for each filetypes{{{
 " 
-autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
-autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
-autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
-autocmd FileType python setlocal nosmartindent
-autocmd BufNewFile,BufRead *.{md,mkd} setlocal filetype=markdown ts=2 shiftwidth=2 softtabstop=2
-autocmd FileType tex setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
+augroup fileTypeIndent
+    autocmd!
+    autocmd FileType javascript setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType html,htmldjango setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType php setlocal ts=4 noexpandtab shiftwidth=4 softtabstop=4 nolist
+    autocmd FileType python setlocal nosmartindent
+    autocmd BufNewFile,BufRead *.{md,mkd} setlocal filetype=markdown ts=2 expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType tex setlocal ts=2 expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType go setlocal ts=4
+    autocmd FileType go setlocal shiftwidth=4
+augroup END
 " }}}
 
 " If exsits local settings
