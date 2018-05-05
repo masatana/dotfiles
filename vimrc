@@ -33,6 +33,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'fatih/vim-go'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -57,7 +58,8 @@ set fileformats=unix,dos,mac
 "command! -nargs=0 Q :q!
 "command! -nargs=0 QQ :qa!
 
-"inoremap <C-c> <Esc>
+" Use <C-[> ;)
+inoremap <C-c> <Nop>
 
 "noremap <BS> <C-h>
 "noremap! <BS> <C-h>
