@@ -1,7 +1,5 @@
-#!/usr/bin/zsh
+#!/usr/bin/env bash
 
-local DOT_FILES
-local DOT
 DOT_FILES=(vimrc vim tmux.conf screenrc agignore)
 DOT="."
 
