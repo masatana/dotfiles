@@ -135,6 +135,7 @@ set title                               " Show title.
 set ttyfast                             " Indicates a fast terminal connection.
 set cursorline
 set pumheight=10                        " Sets preview window up to 10
+set nofixeol
 
 " Set number of spaces to use for each step of (auto)indent.
 " And round indent to multiple of 'shiftwidth'
