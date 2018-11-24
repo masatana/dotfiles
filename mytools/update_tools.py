@@ -10,30 +10,28 @@ import traceback
 import subprocess
 import shlex
 import os
+from pathlib import Path
+
+BASE = Path.home() / ".local"
+SRC_BASE = BASE / "src"
+VIM_SRC = SRC_BASE / "vim"
+IMAGEMAGICK_SRC = SRC_BASE / "ImageMagick"
+PYTHON_SRC = SRC_BASE / "cpython"
 
 
-VIM_SRC = "local/src/vim"
-IMAGEMAGICK_SRC = "local/src/ImageMagick"
-PYTHON_SRC = "local/src/cpython"
-
-
-def process_command(commands, path):
+def process_command(commands: str, path: Path):
     """ Process OS Command """
     subprocess.check_call(shlex.split(commands), cwd=path)
 
 
-def update_tool(src_location, configure_option=""):
+def update_tool(src_location: Path, configure_option: str=""):
     """ update tools """
-    env_vars = os.environ.copy()
-    # abs_location would be `/home/username/local/src/...`
-    abs_location = os.path.join(env_vars["HOME"], src_location)
-    process_command("git pull origin master", abs_location)
+    process_command("git pull origin master", src_location)
     # tools will be installed in `/home/username/local/bin`
     # you should include the path in the $PATH environment
-    process_command("./configure --prefix={0} {1}".format(\
-            os.path.join(os.path.join(env_vars["HOME"], "local")), configure_option), abs_location)
-    process_command("make", abs_location)
-    process_command("make install", abs_location)
+    process_command("./configure --prefix={0} {1}".format(BASE, configure_option), src_location)
+    process_command("make", src_location)
+    process_command("make install", src_location)
 
 def main():
     """ main entrance """
