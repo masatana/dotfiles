@@ -24,7 +24,7 @@ def process_command(commands: str, path: Path):
     subprocess.check_call(shlex.split(commands), cwd=path)
 
 
-def update_tool(src_location: Path, configure_option: str=""):
+def update_tool(src_location: Path, init: bool, configure_option: str=""):
     """ update tools """
     process_command("git pull origin master", src_location)
     # tools will be installed in `/home/username/local/bin`
@@ -37,14 +37,15 @@ def main():
     """ main entrance """
     parser = argparse.ArgumentParser(description="Update good tools")
     parser.add_argument("tool_name", type=str, help="a tool name which is to be updated")
+    parser.add_argument("--init", action="store_true")
     args = parser.parse_args()
     try:
         if args.tool_name == "vim":
-            update_tool(VIM_SRC, "--with-features=huge")
+            update_tool(VIM_SRC, init, "--with-features=huge")
         elif args.tool_name == "imagemagick":
-            update_tool(IMAGEMAGICK_SRC)
+            update_tool(IMAGEMAGICK_SRC, init)
         elif args.tool_name == "cpython":
-            update_tool(PYTHON_SRC)
+            update_tool(PYTHON_SRC, init)
         else:
             return 1
     except subprocess.CalledProcessError:
