@@ -31,9 +31,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 "Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'fatih/vim-go'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elmcast/elm-vim'
 
 call plug#end()
 
